@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.controller.UserUpdateEntity" table="user_update" schema="" catalog="thesis">
+    <class name="com.thesischecker.dto.UserUpdateEntity" table="user_update" schema="" catalog="thesis">
         <id name="id">
             <column name="id" sql-type="int" not-null="true"/>
         </id>
@@ -19,7 +19,7 @@
         </property>
         <set name="User" inverse="true">
             <key/>
-            <one-to-many not-found="ignore" class="com.thesischecker.controller.UserEntity"/>
+            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
         </set>
     </class>
 </hibernate-mapping>

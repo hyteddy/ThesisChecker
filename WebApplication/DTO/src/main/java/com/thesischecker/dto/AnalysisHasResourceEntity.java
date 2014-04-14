@@ -1,4 +1,4 @@
-package com.thesischecker.controller;
+package com.thesischecker.dto;
 
 import javax.persistence.*;
 

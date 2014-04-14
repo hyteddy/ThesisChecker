@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/thesis</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <mapping resource="com/thesischecker/hbm/AnalysisEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.AnalysisEntity"/>
+        <mapping resource="com/thesischecker/hbm/AnalysisHasResourceEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.AnalysisHasResourceEntity"/>
+        <mapping resource="com/thesischecker/hbm/ResourceEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.ResourceEntity"/>
+        <mapping resource="com/thesischecker/hbm/UserEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.UserEntity"/>
+        <mapping resource="com/thesischecker/hbm/UserProfileEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.UserProfileEntity"/>
+        <mapping resource="com/thesischecker/hbm/UserUpdateEntity.hbm.xml"/>
+        <mapping class="com.thesischecker.dto.UserUpdateEntity"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

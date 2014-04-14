@@ -1,3 +1,5 @@
+package com.thesischecker.dto;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
@@ -12,7 +14,7 @@ import java.util.Map;
 /**
  * Created by awilczyn on 12.04.2014.
  */
-public class Main {
+public class HbMain {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
 

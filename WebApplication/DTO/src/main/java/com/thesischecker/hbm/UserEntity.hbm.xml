@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.controller.UserEntity" table="user" schema="" catalog="thesis">
+    <class name="com.thesischecker.dto.UserEntity" table="user" schema="" catalog="thesis">
         <id name="id">
             <column name="id" sql-type="int" not-null="true"/>
         </id>
@@ -35,15 +35,15 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <many-to-one name="Analysis" class="com.thesischecker.controller.AnalysisEntity">
+        <many-to-one name="Analysis" class="com.thesischecker.dto.AnalysisEntity">
             <column name="id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="Updates" class="com.thesischecker.controller.UserUpdateEntity">
+        <many-to-one name="Updates" class="com.thesischecker.dto.UserUpdateEntity">
             <column name="id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="Resources" class="com.thesischecker.controller.ResourceEntity">
+        <many-to-one name="Resources" class="com.thesischecker.dto.ResourceEntity">
             <column name="id" not-null="true"/>
         </many-to-one>
-        <one-to-one name="Profile" class="com.thesischecker.controller.UserProfileEntity"/>
+        <one-to-one name="Profile" class="com.thesischecker.dto.UserProfileEntity"/>
     </class>
 </hibernate-mapping>

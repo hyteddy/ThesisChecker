@@ -1,6 +1,7 @@
-package com.thesischecker.controller;
+package com.thesischecker.dto;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Collection;
 
@@ -8,11 +9,12 @@ import java.util.Collection;
  * Created by awilczyn on 12.04.2014.
  */
 @Entity
-@Table(name = "resource", schema = "", catalog = "thesis")
-public class ResourceEntity {
+@Table(name = "analysis", schema = "", catalog = "thesis")
+public class AnalysisEntity {
     private int id;
-    private String name;
+    private Timestamp date;
     private String description;
+    private BigDecimal result;
     private String fileType;
     private String filePath;
     private String plainText;
@@ -20,8 +22,8 @@ public class ResourceEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private Collection<AnalysisEntity> Analysis;
     private Collection<UserEntity> User;
+    private Collection<ResourceEntity> Resources;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -34,13 +36,13 @@ public class ResourceEntity {
     }
 
     @Basic
-    @Column(name = "name", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getName() {
-        return name;
+    @Column(name = "date", nullable = true, insertable = true, updatable = true)
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     @Basic
@@ -51,6 +53,16 @@ public class ResourceEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Basic
+    @Column(name = "result", nullable = true, insertable = true, updatable = true, precision = 2)
+    public BigDecimal getResult() {
+        return result;
+    }
+
+    public void setResult(BigDecimal result) {
+        this.result = result;
     }
 
     @Basic
@@ -128,16 +140,17 @@ public class ResourceEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ResourceEntity that = (ResourceEntity) o;
+        AnalysisEntity that = (AnalysisEntity) o;
 
         if (id != that.id) return false;
         if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
         if (deletedAt != null ? !deletedAt.equals(that.deletedAt) : that.deletedAt != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (filePath != null ? !filePath.equals(that.filePath) : that.filePath != null) return false;
         if (fileType != null ? !fileType.equals(that.fileType) : that.fileType != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (plainText != null ? !plainText.equals(that.plainText) : that.plainText != null) return false;
+        if (result != null ? !result.equals(that.result) : that.result != null) return false;
         if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
 
@@ -146,34 +159,35 @@ public class ResourceEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (fileType != null ? fileType.hashCode() : 0);
-        result = 31 * result + (filePath != null ? filePath.hashCode() : 0);
-        result = 31 * result + (plainText != null ? plainText.hashCode() : 0);
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
-        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
-        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
-        return result;
+        int result1 = id;
+        result1 = 31 * result1 + (date != null ? date.hashCode() : 0);
+        result1 = 31 * result1 + (description != null ? description.hashCode() : 0);
+        result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
+        result1 = 31 * result1 + (fileType != null ? fileType.hashCode() : 0);
+        result1 = 31 * result1 + (filePath != null ? filePath.hashCode() : 0);
+        result1 = 31 * result1 + (plainText != null ? plainText.hashCode() : 0);
+        result1 = 31 * result1 + (userId != null ? userId.hashCode() : 0);
+        result1 = 31 * result1 + (createdAt != null ? createdAt.hashCode() : 0);
+        result1 = 31 * result1 + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result1 = 31 * result1 + (deletedAt != null ? deletedAt.hashCode() : 0);
+        return result1;
     }
 
-    @ManyToMany(mappedBy = "Resources")
-    public Collection<AnalysisEntity> getAnalysis() {
-        return Analysis;
-    }
-
-    public void setAnalysis(Collection<AnalysisEntity> analysis) {
-        Analysis = analysis;
-    }
-
-    @OneToMany(mappedBy = "Resources")
+    @OneToMany(mappedBy = "Analysis")
     public Collection<UserEntity> getUser() {
         return User;
     }
 
     public void setUser(Collection<UserEntity> user) {
         User = user;
+    }
+
+    @ManyToMany
+    public Collection<ResourceEntity> getResources() {
+        return Resources;
+    }
+
+    public void setResources(Collection<ResourceEntity> resources) {
+        Resources = resources;
     }
 }

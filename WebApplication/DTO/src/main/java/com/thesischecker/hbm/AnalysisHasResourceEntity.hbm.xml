@@ -4,9 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.controller.AnalysisHasResourceEntity" table="analysis_has_resource" schema=""
+    <class name="com.thesischecker.dto.AnalysisHasResourceEntity" table="analysis_has_resource" schema=""
            catalog="thesis">
-        <composite-id mapped="true" class="com.thesischecker.controller.AnalysisHasResourceEntityPK">
+        <composite-id mapped="true" class="com.thesischecker.dto.AnalysisHasResourceEntityPK">
             <key-property name="analysisId">
                 <column name="analysis_id" sql-type="int" not-null="true"/>
             </key-property>

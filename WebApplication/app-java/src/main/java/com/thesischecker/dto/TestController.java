@@ -1,4 +1,4 @@
-package com.thesischecker.controller;
+package com.thesischecker.dto;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Test controller
+ * Test dto
  * @author Tomasz Morek
  */
 @Controller
@@ -17,7 +17,7 @@ public class TestController {
      * Index text method
      * @return view name
      */
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/test/index", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("index");
     }
