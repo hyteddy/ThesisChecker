@@ -4,15 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>thesischecker</groupId>
-    <artifactId>main.module</artifactId>
+    <groupId>thesischecker.comparator</groupId>
+    <artifactId>comparator</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>WebApplication</module>
-        <module>comparator</module>
-    </modules>
-
-    <packaging>pom</packaging>
 
 </project>

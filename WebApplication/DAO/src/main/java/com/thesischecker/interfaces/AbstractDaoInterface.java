@@ -1,4 +1,6 @@
-package com.thesischecker.impl;
+package com.thesischecker.interfaces;
+
+import org.hibernate.criterion.Criterion;
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,4 +35,11 @@ public interface AbstractDaoInterface<E, I extends Serializable > {
      * @return
      */
     List<E> findAll();
+
+    /**
+     * Find object by criteria
+     * @param criterion criterion
+     * @return
+     */
+    List<E> find(Criterion criterion);
 }
