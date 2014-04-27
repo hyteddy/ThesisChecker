@@ -1,87 +1,83 @@
 package com.thesischecker.dto;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
- * Created by awilczyn on 12.04.2014.
+ * Created by awilczyn on 12.04.2014. 
  */
 @Entity
 @Table(name = "user", schema = "", catalog = "thesis")
 public class UserEntity {
-    private int id;
-    private String email;
-    private String salt;
-    private String password;
-    private String role;
-    private String token;
     private Byte active;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-    private Timestamp deletedAt;
     private AnalysisEntity Analysis;
+    private Timestamp createdAt;
+    private Timestamp deletedAt;
+    private String email;
+    private int id;
+    private String password;
     private UserProfileEntity Profile;
-    private UserUpdateEntity Updates;
     private ResourceEntity Resources;
+    private String role;
+    private String salt;
+    private String token;
+    private Timestamp updatedAt;
+    private UserUpdateEntity Updates;
 
-    @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    public int getId() {
-        return id;
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        UserEntity that = (UserEntity) o;
 
-    @Basic
-    @Column(name = "email", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getEmail() {
-        return email;
-    }
+        if (id != that.id) {
+            return false;
+        }
+        if (active != null ? !active.equals(that.active) : that.active != null) {
+            return false;
+        }
+        if (createdAt != null ? !createdAt.equals(that.createdAt)
+                : that.createdAt != null) {
+            return false;
+        }
+        if (deletedAt != null ? !deletedAt.equals(that.deletedAt)
+                : that.deletedAt != null) {
+            return false;
+        }
+        if (email != null ? !email.equals(that.email) : that.email != null) {
+            return false;
+        }
+        if (password != null ? !password.equals(that.password)
+                : that.password != null) {
+            return false;
+        }
+        if (role != null ? !role.equals(that.role) : that.role != null) {
+            return false;
+        }
+        if (salt != null ? !salt.equals(that.salt) : that.salt != null) {
+            return false;
+        }
+        if (token != null ? !token.equals(that.token) : that.token != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(that.updatedAt)
+                : that.updatedAt != null) {
+            return false;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Basic
-    @Column(name = "salt", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    @Basic
-    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "role", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    @Basic
-    @Column(name = "token", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+        return true;
     }
 
     @Basic
@@ -90,8 +86,9 @@ public class UserEntity {
         return active;
     }
 
-    public void setActive(Byte active) {
-        this.active = active;
+    @ManyToOne(targetEntity = AnalysisEntity.class)
+    public AnalysisEntity getAnalysis() {
+        return Analysis;
     }
 
     @Basic
@@ -100,8 +97,56 @@ public class UserEntity {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    @Basic
+    @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
+    public Timestamp getDeletedAt() {
+        return deletedAt;
+    }
+
+    @Basic
+    @Column(name = "email", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getEmail() {
+        return email;
+    }
+
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
+        return id;
+    }
+
+    @Basic
+    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getPassword() {
+        return password;
+    }
+
+    @OneToOne(targetEntity = UserProfileEntity.class)
+    public UserProfileEntity getProfile() {
+        return Profile;
+    }
+
+    @ManyToOne(targetEntity = ResourceEntity.class)
+    public ResourceEntity getResources() {
+        return Resources;
+    }
+
+    @Basic
+    @Column(name = "role", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getRole() {
+        return role;
+    }
+
+    @Basic
+    @Column(name = "salt", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getSalt() {
+        return salt;
+    }
+
+    @Basic
+    @Column(name = "token", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getToken() {
+        return token;
     }
 
     @Basic
@@ -110,39 +155,9 @@ public class UserEntity {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Basic
-    @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
-    public Timestamp getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Timestamp deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UserEntity that = (UserEntity) o;
-
-        if (id != that.id) return false;
-        if (active != null ? !active.equals(that.active) : that.active != null) return false;
-        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
-        if (deletedAt != null ? !deletedAt.equals(that.deletedAt) : that.deletedAt != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
-        if (salt != null ? !salt.equals(that.salt) : that.salt != null) return false;
-        if (token != null ? !token.equals(that.token) : that.token != null) return false;
-        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
-
-        return true;
+    @ManyToOne(targetEntity = UserUpdateEntity.class)
+    public UserUpdateEntity getUpdates() {
+        return Updates;
     }
 
     @Override
@@ -160,39 +175,59 @@ public class UserEntity {
         return result;
     }
 
-    @ManyToOne
-    public AnalysisEntity getAnalysis() {
-        return Analysis;
+    public void setActive(Byte active) {
+        this.active = active;
     }
 
     public void setAnalysis(AnalysisEntity analysis) {
         Analysis = analysis;
     }
 
-    @OneToOne
-    public UserProfileEntity getProfile() {
-        return Profile;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setDeletedAt(Timestamp deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setProfile(UserProfileEntity profile) {
         Profile = profile;
     }
 
-    @ManyToOne
-    public UserUpdateEntity getUpdates() {
-        return Updates;
+    public void setResources(ResourceEntity resources) {
+        Resources = resources;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public void setUpdates(UserUpdateEntity updates) {
         Updates = updates;
-    }
-
-    @ManyToOne
-    public ResourceEntity getResources() {
-        return Resources;
-    }
-
-    public void setResources(ResourceEntity resources) {
-        Resources = resources;
     }
 }
