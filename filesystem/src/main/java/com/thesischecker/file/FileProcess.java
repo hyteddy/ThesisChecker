@@ -25,7 +25,7 @@ public class FileProcess {
         byte[] bytes = new byte[1024];
 
         File newF = createTempFile(uploadFile);
-        out = new FileOutputStream(createTempFile(uploadFile));
+        out = new FileOutputStream(newF);
         try {
             while ((read = uploadedInputStream.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
@@ -81,8 +81,7 @@ public class FileProcess {
         }
         String extension = baseName.substring(baseName.lastIndexOf('.'));
 
-        File f;
-        f = File.createTempFile(name, extension, baseDir);
+        File f = File.createTempFile(name, extension, baseDir);
         if (f.exists()) {
             return f;
         }
