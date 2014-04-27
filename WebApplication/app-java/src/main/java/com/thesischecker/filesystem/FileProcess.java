@@ -1,13 +1,13 @@
-package com.thesischecker.file;
+package com.thesischecker.filesystem;
 
+import com.thesischecker.interfaces.IFileProcess;
 
 import java.io.*;
 
 /**
  * Created by awilczyn on 26.04.2014.
  */
-public class FileProcess {
-
+public class FileProcess implements IFileProcess{
     private String path;
     private static final int TEMP_FILE_ATTEMPTS = 10000;
 
@@ -17,7 +17,11 @@ public class FileProcess {
 
     /**
      * function to save file on disk
+     * @param uploadFile
+     * @return
+     * @throws IOException
      */
+    @Override
     public String saveFileOnDisk(File uploadFile) throws IOException {
         InputStream uploadedInputStream = new FileInputStream(uploadFile);
         OutputStream out;
@@ -40,8 +44,9 @@ public class FileProcess {
 
     /**
      * function to get file from disk
-     * @return file
+     * @return file stream
      */
+    @Override
     public FileInputStream getFileFromDisk(){
         try{
             File file = new File(this.path);
@@ -56,6 +61,7 @@ public class FileProcess {
     /**
      * function to delete fie from disk
      */
+    @Override
     public boolean deleteFileFromDisk(){
         try{
             File file = new File(this.path);
@@ -70,6 +76,13 @@ public class FileProcess {
         return false;
     }
 
+    /**
+     * function to create file with unique filename
+     * @param uploadFile
+     * @return
+     * @throws IOException
+     */
+    @Override
     public File createTempFile(File uploadFile) throws IOException {
         File baseDir = new File(this.path);
         String baseName = uploadFile.getName();
