@@ -28,13 +28,7 @@ public interface AbstractDaoInterface<E, I extends Serializable > {
      * @param id object ID
      * @return Object
      */
-    E findById(I id);
-
-    /**
-     * Find all entity records
-     * @return
-     */
-    List<E> findAll();
+    E findById(Long id);
 
     /**
      * Find object by criteria
