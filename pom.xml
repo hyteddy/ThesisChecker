@@ -11,7 +11,6 @@
     <modules>
         <module>WebApplication</module>
         <module>comparator</module>
-        <module>filesystem</module>
     </modules>
 
     <packaging>pom</packaging>
