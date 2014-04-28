@@ -1,4 +1,4 @@
-package com.thesischecker.file;
+package com.thesischecker.filesystem;
 
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class FileProcessTest extends TestCase {
 
     @Test
     public void testGetFileFromDisk() throws Exception {
-       // FileProcess fileP = new FileProcess("/Users/awilczyn/ThesisChecker/WebApplication/app-web/src/main/resources/files/test584778542838682843.md");
+        // FileProcess fileP = new FileProcess("/Users/awilczyn/ThesisChecker/WebApplication/app-web/src/main/resources/files/test584778542838682843.md");
         //FileInputStream test = fileP.getFileFromDisk();
     }
 
