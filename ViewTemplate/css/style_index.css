@@ -1,95 +1,23 @@
 /* LOGO */
-#logoz{
-	width: 230px;
-	height: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-	box-shadow: 0px -10px 13px rgba(103, 154, 255, 0.3);
-	border-radius: 50px;
+html,body{
+	background-color: #f5f5f5;
 }
 
-#logow{
-	width: 195px;
-	height: 200px;
-	padding: 20px;
-}
-
-/* TRESC STRONY */
-#sign_in{
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 10px;
-}
-
-#sign_in label{
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-	color: #EBF5FF;
-	font-size: 15;
-	padding: 5;
-	font-weight: bold;
-	text-shadow: 0px 0px 10px #000000;
-}
-
-#sign_in label{
-	margin-left: 70px;
-}
-
-#sign_in form{
-	width: 190px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#sign_in input{
-	width: 185px;
+#content{
+	width: 400px;
+	padding: 5px;
+	background-color: white;
+	border: 1px solid gainsboro;
 	border-radius: 5px;
-	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-	color: #5E5E5E;
-	font-size: 15;
-	padding: 5;
-	font-weight: bold;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
 }
 
-#sign_in input:hover,
-#sign_in input:focus,
-#sign_in input:after{
-	width: 185px;
-	background-color: aliceblue;
-	border-top: 2px solid grey;
-	border-left: 2px solid grey;
-	outline:none;
-	
+#content h2{
+	margin-left:auto;
+	margin-right: auto;
+	width: 215px;
 }
+/* TRESC STRONY */
 
-
-/* button */
-input[type=submit]{
-	margin-top: 25px;
-	height: 30px;
-	background-color: gainsboro;
-	border-radius: 10px;
-	-webkit-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-moz-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-o-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-ms-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-}
-
-input[type=submit]:hover{
-	box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-webkit-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-moz-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-o-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-ms-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);	
-}
-
-
-/* formularz */
-form{
-	box-shadow: 0px 10px 7px rgba(103, 154, 255, 0.3);
-	width: 200px;
-	height: 180px;
-	padding: 17px;
-	border-radius: 64px;
-}

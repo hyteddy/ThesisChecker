@@ -3,6 +3,9 @@ body{
 	margin-left: auto;
 }
 
+img{
+	background-color:#f5f5f5;
+}
 /* logo */
 #logoz{
 	float:left;
@@ -12,35 +15,27 @@ body{
 	width: 100px;
 	height: 100px;
 	padding: 10px;
-	background-color: antiquewhite;
-	border-radius: 20px;
 }
 
 /* name */
 #identification{
 	float:right;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 /* content */
-#list_doc_z{
-	width: 100%;
-	height: 200px;
-	clear:both;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	border: 1px solid blue;
-	border-radius: 10px 0px 0px 10px;
+
+.input-append{
+	width: 345px;
 }
 
-#list_doc_w{
-	/* height:10000px; */
-	/* background-color:blue; */
-	margin: 5px 10px 0px 10px;
+.input-wlasne{
+	width:100%;
 }
 
-#list_doc_w input[type=checkbox]{
-	float:right;
+#list_doc_w select{
+	width:100%;
+	height:200px;
 }
 
 
@@ -49,84 +44,26 @@ body{
 	clear:both;
 }
 
-#sender form{
-	width: 305px;
-	padding: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 60px;
-	box-shadow: 0px 10px 10px rgba(103, 154, 255, 0.3);
-	border: 1px solid blue;
-}
-
-#sender label{
-	margin-left: 100px;
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-	color: #EBF5FF;
-	font-size: 15;
-	padding: 5;
-	font-weight: bold;
-	text-shadow: 0px 0px 10px #000000;
-}
-
-#sender input[type=text]{
-	width:300px;
-	border-radius: 4px;
-}
-
 #sender input#file{
 	overflow: hidden;
 	width: 0px;
 	height: 0px;
 }
 
-/* Buttons */
-#chooser{
-	width: 105px;
-	height: 20px;
-	border-radius: 16px;
-	padding: 9px;
-	float: left;
-	cursor: context-menu;
-}
-
-#sender input[type=submit]{
-	height: 38px;
-	width: 123px;
-	border-radius: 16px;
-	float:right;
-}
-
-#chooser, #delete,
-#sender input[type=submit]{
-	background-color:gainsboro;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	-webkit-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-moz-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-o-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	-ms-box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	box-shadow: 5px 5px 10px rgba(0,100,100,0.5);
-	font-weight: bold;
-	font-size: 14px;
-	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
-}
-#chooser:hover, #delete:hover,
-#sender input[type=submit]:hover{
-	box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-webkit-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-moz-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-o-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);
-	-ms-box-shadow: 0px 0px 10px rgba(0,100,100,0.5);	
+#sender form{
+	width: 400px;
+	padding: 5px;
+	background-color: #f5f5f5;
+	border: 1px solid gainsboro;
+	border-radius: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
 }
 
 #delete{
-	float: right;
-	border-radius: 10px;
-	height: 20px;
-	width: 50px;
-	padding-left: 12px;
-	background-color: rgba(155,155,155,0.1);
+	margin-left: auto;
+	width: 70px;
 }
 
 /* respons */
