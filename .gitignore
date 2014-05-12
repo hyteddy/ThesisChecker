@@ -66,6 +66,12 @@ local.properties
  
 # CDT-specific
 .cproject
+
+######################
+# IngelliJ
+######################
+.idea
+*.iml
  
 # PDT-specific
 .buildpath
