@@ -1,4 +1,4 @@
-package com.thesischecker.interfaces;
+package com.thesischecker.dao.interfaces;
 
 import com.thesischecker.dto.AnalysisEntity;
 
@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * DAO interface to handle AnalysisEntity DTO
  */
-public interface AnalysisDaoInterface extends
-        AbstractDaoInterface<AnalysisEntity, String> {
+public interface IAnalysisDao extends IAbstractDao<AnalysisEntity, String> {
 
     /**
      * Save analysis on DB
@@ -20,12 +19,12 @@ public interface AnalysisDaoInterface extends
      * Find all analysis object
      * @return List
      */
-    List<AnalysisEntity> findAll();
+    List<AnalysisEntity> findAllAnalysis();
 
     /**
      * Find analysis by ID
      * @param id
      * @return AnalysisEntity
      */
-    AnalysisEntity find(Long id);
+    AnalysisEntity findAnalyse(Long id);
 }

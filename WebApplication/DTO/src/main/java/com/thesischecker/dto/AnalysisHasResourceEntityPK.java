@@ -2,9 +2,6 @@ package com.thesischecker.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 /**
  * Created by awilczyn on 12.04.2014.
  */
@@ -39,14 +36,10 @@ public class AnalysisHasResourceEntityPK implements Serializable {
         return true;
     }
 
-    @Column(name = "analysis_id", nullable = false, insertable = true, updatable = true)
-    @Id
     public int getAnalysisId() {
         return analysisId;
     }
 
-    @Column(name = "resource_id", nullable = false, insertable = true, updatable = true)
-    @Id
     public int getResourceId() {
         return resourceId;
     }

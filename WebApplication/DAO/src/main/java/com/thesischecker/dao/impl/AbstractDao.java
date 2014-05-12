@@ -1,10 +1,11 @@
-package com.thesischecker.impl;
+package com.thesischecker.dao.impl;
 
-import com.thesischecker.interfaces.AbstractDaoInterface;
+import com.thesischecker.dao.interfaces.IAbstractDao;
+import com.thesischecker.dto.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,8 +14,8 @@ import java.util.List;
  * Implementation AbstractDao
  * @author Tomasz Morek
  */
-public class AbstractDao<E, I extends Serializable> implements
-        AbstractDaoInterface {
+public abstract class AbstractDao<E, I extends Serializable> implements
+        IAbstractDao<E, I> {
 
     /**
      * Dto class
@@ -24,7 +25,6 @@ public class AbstractDao<E, I extends Serializable> implements
     /**
      * Session factory
      */
-    @Autowired
     private SessionFactory sessionFactory;
 
     /**
@@ -33,6 +33,7 @@ public class AbstractDao<E, I extends Serializable> implements
      */
     protected AbstractDao(Class<E> dtoClass) {
         this.dtoClass = dtoClass;
+        this.sessionFactory = HibernateUtil.getSessionFactory();
     }
 
     /**
@@ -40,7 +41,7 @@ public class AbstractDao<E, I extends Serializable> implements
      * @return Session
      */
     protected Session getSession() {
-        return this.sessionFactory.getCurrentSession();
+        return this.sessionFactory.openSession();
     }
 
     @Override
@@ -54,12 +55,14 @@ public class AbstractDao<E, I extends Serializable> implements
     }
 
     @Override
-    public Object findById(Long id) {
-        return this.getSession().get(this.dtoClass, id);
+    public E findById(Long id) {
+        return (E) this.getSession().get(this.dtoClass, id);
     }
 
     @Override
     public List find(Criterion criterion) {
-        return null;
+        Criteria criteria = this.getSession().createCriteria(this.dtoClass);
+        criteria.add(criterion);
+        return criteria.list();
     }
 }

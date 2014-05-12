@@ -1,42 +1,22 @@
 package com.thesischecker.dto;
 
-import javax.persistence.*;
-import java.util.Collection;
-
 /**
  * Created by awilczyn on 12.04.2014.
  */
-@Entity
-@Table(name = "user_update", schema = "", catalog = "thesis")
 public class UserUpdateEntity {
-    private int id;
-    private Integer userId;
+    private Long id;
     private String token;
     private String type;
-    private Collection<UserEntity> User;
+    private UserEntity userEntity;
 
-    @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "user_id", nullable = true, insertable = true, updatable = true)
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "token", nullable = true, insertable = true, updatable = true, length = 255)
     public String getToken() {
         return token;
     }
@@ -45,8 +25,6 @@ public class UserUpdateEntity {
         this.token = token;
     }
 
-    @Basic
-    @Column(name = "type", nullable = true, insertable = true, updatable = true, length = 255)
     public String getType() {
         return type;
     }
@@ -65,26 +43,15 @@ public class UserUpdateEntity {
         if (id != that.id) return false;
         if (token != null ? !token.equals(that.token) : that.token != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
 
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (token != null ? token.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        return result;
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
-    @OneToMany(mappedBy = "Updates")
-    public Collection<UserEntity> getUser() {
-        return User;
-    }
-
-    public void setUser(Collection<UserEntity> user) {
-        User = user;
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

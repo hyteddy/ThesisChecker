@@ -8,18 +8,14 @@
         <id name="id">
             <column name="id" sql-type="int" not-null="true"/>
         </id>
-        <property name="userId">
-            <column name="user_id" sql-type="int"/>
-        </property>
         <property name="token">
             <column name="token" sql-type="varchar"/>
         </property>
         <property name="type">
             <column name="type" sql-type="varchar"/>
         </property>
-        <set name="User" inverse="true">
-            <key/>
-            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
-        </set>
+        <many-to-one name="userEntity" class="com.thesischecker.dto.UserEntity">
+            <column name="user_id" not-null="false"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

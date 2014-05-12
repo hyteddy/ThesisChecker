@@ -1,4 +1,4 @@
-package com.thesischecker.interfaces;
+package com.thesischecker.dao.interfaces;
 
 import org.hibernate.criterion.Criterion;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * Abstract DAO interface to implements by all DAO class
  * @author Tomasz Morek
  */
-public interface AbstractDaoInterface<E, I extends Serializable > {
+public interface IAbstractDao<E, I extends Serializable > {
 
     /**
      * Save or update object from DB

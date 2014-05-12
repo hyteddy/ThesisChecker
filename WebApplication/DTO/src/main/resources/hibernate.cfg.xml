@@ -4,21 +4,22 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/thesis</property>
+        <property name="connection.url">jdbc:mysql://kulisz.eu:3306/mszczygiel_baza</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
-        <mapping resource="com/thesischecker/hbm/AnalysisEntity.hbm.xml"/>
+        <property name="connection.username">mszczygiel</property>
+        <property name="connection.password">an4GcJ5FKB4qU97n</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping resource="hbm/AnalysisEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.AnalysisEntity"/>
-        <mapping resource="com/thesischecker/hbm/AnalysisHasResourceEntity.hbm.xml"/>
+        <mapping resource="hbm/AnalysisHasResourceEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.AnalysisHasResourceEntity"/>
-        <mapping resource="com/thesischecker/hbm/ResourceEntity.hbm.xml"/>
+        <mapping resource="hbm/ResourceEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.ResourceEntity"/>
-        <mapping resource="com/thesischecker/hbm/UserEntity.hbm.xml"/>
+        <mapping resource="hbm/UserEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserEntity"/>
-        <mapping resource="com/thesischecker/hbm/UserProfileEntity.hbm.xml"/>
+        <mapping resource="hbm/UserProfileEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserProfileEntity"/>
-        <mapping resource="com/thesischecker/hbm/UserUpdateEntity.hbm.xml"/>
+        <mapping resource="hbm/UserUpdateEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserUpdateEntity"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
