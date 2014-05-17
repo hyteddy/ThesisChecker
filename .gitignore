@@ -1,14 +1,39 @@
+/src/main/resources/rebel.xml
+
+# Build directories
+/build/
+/bin/
+target/
 *.class
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# OS-specific thumbnail, temp and config files
+.DS_Store
+Thumbs.db
+Desktop.ini
+._*
+.Spotlight-V100
+.Trashes
 
-# Project configuration files #
-*.idea
+# Eclipse-based IDEs
+.project
+.cproject
+*.pydevproject
+.metadata
+bin/**
+tmp/**
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+*.launch
+.externalToolBuilders/
+
+# IntelliJ IDEA IDE
+.idea/
 *.iml
-*.DS_Store
-
-#folders
-target/
+*.iws
+.buildpath

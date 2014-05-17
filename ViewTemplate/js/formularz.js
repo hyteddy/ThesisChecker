@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('#file').change(function(){
 		$this = $(this);
-		$('#url').attr('value', $this.val());
+		$('.input-wlasne').attr('value', $this.val());
 	})
 
 	$('#chooser').click(function(){

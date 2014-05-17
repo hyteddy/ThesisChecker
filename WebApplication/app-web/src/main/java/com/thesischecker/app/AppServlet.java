@@ -31,7 +31,7 @@ public class AppServlet implements HttpRequestHandler {
     public void handleRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         UserEntity userEntity = new UserEntity();
-        userEntity.setId(2);
+        userEntity.setId((long) 2);
         userEntity.setEmail("michal.szczygiel@wp.pl");
 
         try {

@@ -23,9 +23,6 @@
         <property name="plainText">
             <column name="plain_text" sql-type="longtext" length="2147483647"/>
         </property>
-        <property name="userId">
-            <column name="user_id" sql-type="int"/>
-        </property>
         <property name="createdAt">
             <column name="created_at" sql-type="datetime" not-null="true"/>
         </property>
@@ -35,13 +32,16 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <set name="Analysis" inverse="true">
-            <key/>
-            <many-to-many not-found="ignore" class="com.thesischecker.dto.AnalysisEntity"/>
+        <set name="analysisEntitySet" table="analysis_has_resource" schema="" catalog="thesis">
+            <key>
+                <column name="resource_id" not-null="true"/>
+            </key>
+            <many-to-many not-found="ignore" class="com.thesischecker.dto.AnalysisEntity">
+                <column name="analysis_id" not-null="true"/>
+            </many-to-many>
         </set>
-        <set name="User" inverse="true">
-            <key/>
-            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
-        </set>
+        <many-to-one name="userEntity" class="com.thesischecker.dto.UserEntity">
+            <column name="user_id" not-null="false"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

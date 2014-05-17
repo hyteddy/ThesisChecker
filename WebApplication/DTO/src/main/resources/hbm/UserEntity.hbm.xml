@@ -35,15 +35,24 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <many-to-one name="Analysis" class="com.thesischecker.dto.AnalysisEntity">
-            <column name="id" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="Updates" class="com.thesischecker.dto.UserUpdateEntity">
-            <column name="id" not-null="true"/>
-        </many-to-one>
-        <many-to-one name="Resources" class="com.thesischecker.dto.ResourceEntity">
-            <column name="id" not-null="true"/>
-        </many-to-one>
+        <set name="analysisEntitySet">
+            <key>
+                <column name="id" not-null="false"/>
+            </key>
+            <one-to-many class="com.thesischecker.dto.AnalysisEntity"/>
+        </set>
+        <set name="userUpdateEntitySet">
+            <key>
+                <column name="id" not-null="false"/>
+            </key>
+            <one-to-many class="com.thesischecker.dto.UserUpdateEntity"/>
+        </set>
+        <set name="resourceEntitySet">
+            <key>
+                <column name="id" not-null="false"/>
+            </key>
+            <one-to-many class="com.thesischecker.dto.ResourceEntity"/>
+        </set>
         <one-to-one name="Profile" class="com.thesischecker.dto.UserProfileEntity"/>
     </class>
 </hibernate-mapping>
