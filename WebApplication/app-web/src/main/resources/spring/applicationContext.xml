@@ -6,7 +6,6 @@
 	   xmlns:aop="http://www.springframework.org/schema/aop" 
 	   xmlns:jee="http://www.springframework.org/schema/jee" 
 	   xmlns:tx="http://www.springframework.org/schema/tx"
-	   xmlns:task="http://www.springframework.org/schema/task"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/aop 
                            http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
@@ -20,16 +19,30 @@
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
                            http://www.springframework.org/schema/tx 
                            http://www.springframework.org/schema/tx/spring-tx.xsd 
-                           http://www.springframework.org/schema/task 
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.thesischecker"/>
+    <!-- <context:component-scan base-package="com.thesischecker"/> -->
                            
-    <!-- <context:component-scan base-package="com.thesischecker.*"/> -->
-    <tx:annotation-driven />
-	<tx:jta-transaction-manager />
-    <mvc:annotation-driven />
+    <context:component-scan base-package="com.thesischecker.*"/>
+	<tx:annotation-driven proxy-target-class="true" />
+	<mvc:annotation-driven />
+
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+	    init-method="init" destroy-method="close">
+	    <property name="forceShutdown" value="false" />
+	</bean>
+	
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+	    <property name="transactionTimeout" value="300" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+	    <property name="transactionManager" ref="atomikosTransactionManager" />
+	    <property name="userTransaction" ref="atomikosUserTransaction" />
+	    <property name="allowCustomIsolationLevels" value="true" />
+	</bean>
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
@@ -67,24 +80,10 @@
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />
-				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
 			</bean>
 		</property>
 	</bean>
 	
-	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
-		<property name="forceShutdown" value="false" />
-	</bean>
-	
-	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.J2eeUserTransaction">
-		<property name="transactionTimeout" value="300" />
-	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"
-	depends-on="atomikosTransactionManager,atomikosUserTransaction">
-		<property name="transactionManager" ref="atomikosTransactionManager" />
-		<property name="userTransaction" ref="atomikosUserTransaction" />
-		<property name="allowCustomIsolationLevels" value="true" />
-	</bean>
 
 </beans>

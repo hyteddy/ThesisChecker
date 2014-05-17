@@ -21,8 +21,8 @@ public class UserService implements UserServiceInterace {
 
     @Transactional(rollbackFor = Exception.class)
     public void persistUser(UserEntity userEntity) throws Exception {
-        System.out.println("Persist User");
         userEntityDAO.persistUserEnity(userEntity);
+        System.out.println("Persist User");
     }
 
 }

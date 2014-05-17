@@ -1,5 +1,7 @@
 package com.thesischecker.dto;
 
+import java.io.InputStream;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -12,7 +14,11 @@ public class HibernateUtil {
 
     private static SessionFactory createSessionFactory() {
         try {
-            return new Configuration().configure().buildSessionFactory();
+            InputStream in = HibernateUtil.class
+                    .getResourceAsStream("/hibernate.cfg.xml");
+            Configuration configuration = new Configuration()
+                    .addInputStream(in).configure();
+            return configuration.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
         }
@@ -22,7 +28,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public void closeSession(){
+    public void closeSession() {
         sessionFactory.close();
     }
 }
