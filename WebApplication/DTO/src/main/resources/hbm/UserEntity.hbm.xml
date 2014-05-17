@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.thesischecker.dto.UserEntity" table="user" schema="" catalog="thesis">
@@ -35,24 +35,9 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <set name="analysisEntitySet">
-            <key>
-                <column name="id" not-null="false"/>
-            </key>
-            <one-to-many class="com.thesischecker.dto.AnalysisEntity"/>
-        </set>
-        <set name="userUpdateEntitySet">
-            <key>
-                <column name="id" not-null="false"/>
-            </key>
-            <one-to-many class="com.thesischecker.dto.UserUpdateEntity"/>
-        </set>
-        <set name="resourceEntitySet">
-            <key>
-                <column name="id" not-null="false"/>
-            </key>
-            <one-to-many class="com.thesischecker.dto.ResourceEntity"/>
-        </set>
+        <many-to-one name="Analysis" class="com.thesischecker.dto.AnalysisEntity"/>
+        <many-to-one name="Resources" class="com.thesischecker.dto.ResourceEntity"/>
+        <many-to-one name="Updates" class="com.thesischecker.dto.UserUpdateEntity"/>
         <one-to-one name="Profile" class="com.thesischecker.dto.UserProfileEntity"/>
     </class>
 </hibernate-mapping>

@@ -1,14 +1,15 @@
 package com.thesischecker.dto;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
- * Created by awilczyn on 12.04.2014.
+ * Created by awilczyn on 17.05.2014.
  */
+@Entity
+@Table(name = "user", schema = "", catalog = "thesis")
 public class UserEntity {
-    private Long id;
+    private int id;
     private String email;
     private String salt;
     private String password;
@@ -18,19 +19,23 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
+    private AnalysisEntity Analysis;
+    private ResourceEntity Resources;
     private UserProfileEntity Profile;
-    private Set<AnalysisEntity> analysisEntitySet = new HashSet<AnalysisEntity>();
-    private Set<UserUpdateEntity> userUpdateEntitySet = new HashSet<UserUpdateEntity>();
-    private Set<ResourceEntity> resourceEntitySet = new HashSet<ResourceEntity>();
+    private UserUpdateEntity Updates;
 
-    public Long getId() {
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "email", nullable = true, insertable = true, updatable = true, length = 255)
     public String getEmail() {
         return email;
     }
@@ -39,6 +44,8 @@ public class UserEntity {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "salt", nullable = true, insertable = true, updatable = true, length = 255)
     public String getSalt() {
         return salt;
     }
@@ -47,6 +54,8 @@ public class UserEntity {
         this.salt = salt;
     }
 
+    @Basic
+    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPassword() {
         return password;
     }
@@ -55,6 +64,8 @@ public class UserEntity {
         this.password = password;
     }
 
+    @Basic
+    @Column(name = "role", nullable = true, insertable = true, updatable = true, length = 255)
     public String getRole() {
         return role;
     }
@@ -63,6 +74,8 @@ public class UserEntity {
         this.role = role;
     }
 
+    @Basic
+    @Column(name = "token", nullable = true, insertable = true, updatable = true, length = 255)
     public String getToken() {
         return token;
     }
@@ -71,6 +84,8 @@ public class UserEntity {
         this.token = token;
     }
 
+    @Basic
+    @Column(name = "active", nullable = true, insertable = true, updatable = true)
     public Byte getActive() {
         return active;
     }
@@ -79,6 +94,8 @@ public class UserEntity {
         this.active = active;
     }
 
+    @Basic
+    @Column(name = "created_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -87,6 +104,8 @@ public class UserEntity {
         this.createdAt = createdAt;
     }
 
+    @Basic
+    @Column(name = "updated_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getUpdatedAt() {
         return updatedAt;
     }
@@ -95,36 +114,14 @@ public class UserEntity {
         this.updatedAt = updatedAt;
     }
 
+    @Basic
+    @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
     public Timestamp getDeletedAt() {
         return deletedAt;
     }
 
     public void setDeletedAt(Timestamp deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public Set<AnalysisEntity> getAnalysisEntitySet() {
-        return analysisEntitySet;
-    }
-
-    public void setAnalysisEntitySet(Set<AnalysisEntity> analysisEntitySet) {
-        this.analysisEntitySet = analysisEntitySet;
-    }
-
-    public Set<UserUpdateEntity> getUserUpdateEntitySet() {
-        return userUpdateEntitySet;
-    }
-
-    public void setUserUpdateEntitySet(Set<UserUpdateEntity> userUpdateEntitySet) {
-        this.userUpdateEntitySet = userUpdateEntitySet;
-    }
-
-    public Set<ResourceEntity> getResourceEntitySet() {
-        return resourceEntitySet;
-    }
-
-    public void setResourceEntitySet(Set<ResourceEntity> resourceEntitySet) {
-        this.resourceEntitySet = resourceEntitySet;
     }
 
     @Override
@@ -148,11 +145,58 @@ public class UserEntity {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (salt != null ? salt.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (token != null ? token.hashCode() : 0);
+        result = 31 * result + (active != null ? active.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
+    public AnalysisEntity getAnalysis() {
+        return Analysis;
+    }
+
+    public void setAnalysis(AnalysisEntity analysis) {
+        Analysis = analysis;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
+    public ResourceEntity getResources() {
+        return Resources;
+    }
+
+    public void setResources(ResourceEntity resources) {
+        Resources = resources;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
     public UserProfileEntity getProfile() {
         return Profile;
     }
 
     public void setProfile(UserProfileEntity profile) {
         Profile = profile;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
+    public UserUpdateEntity getUpdates() {
+        return Updates;
+    }
+
+    public void setUpdates(UserUpdateEntity updates) {
+        Updates = updates;
     }
 }

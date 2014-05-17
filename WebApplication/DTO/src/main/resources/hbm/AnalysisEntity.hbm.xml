@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.thesischecker.dto.AnalysisEntity" table="analysis" schema="" catalog="thesis">
@@ -26,6 +26,9 @@
         <property name="plainText">
             <column name="plain_text" sql-type="longtext" length="2147483647"/>
         </property>
+        <property name="userId">
+            <column name="user_id" sql-type="int"/>
+        </property>
         <property name="createdAt">
             <column name="created_at" sql-type="datetime" not-null="true"/>
         </property>
@@ -35,16 +38,10 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <many-to-one name="userEntity" class="com.thesischecker.dto.UserEntity">
-            <column name="user_id" not-null="false"/>
-        </many-to-one>
-        <set name="resourceEntitySet" table="analysis_has_resource" schema="" catalog="thesis">
-            <key>
-                <column name="analysis_id" not-null="true"/>
-            </key>
-            <many-to-many not-found="ignore" class="com.thesischecker.dto.ResourceEntity">
-                <column name="resource_id" not-null="true"/>
-            </many-to-many>
+        <one-to-one name="User" class="com.thesischecker.dto.UserEntity"/>
+        <set name="Resources">
+            <key/>
+            <many-to-many not-found="ignore" class="com.thesischecker.dto.ResourceEntity"/>
         </set>
     </class>
 </hibernate-mapping>

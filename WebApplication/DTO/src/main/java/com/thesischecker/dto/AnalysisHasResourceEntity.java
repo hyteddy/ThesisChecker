@@ -1,12 +1,19 @@
 package com.thesischecker.dto;
 
+import javax.persistence.*;
+
 /**
- * Created by awilczyn on 12.04.2014.
+ * Created by awilczyn on 17.05.2014.
  */
+@Entity
+@Table(name = "analysis_has_resource", schema = "", catalog = "thesis")
+@IdClass(AnalysisHasResourceEntityPK.class)
 public class AnalysisHasResourceEntity {
     private int analysisId;
     private int resourceId;
 
+    @Id
+    @Column(name = "analysis_id", nullable = false, insertable = true, updatable = true)
     public int getAnalysisId() {
         return analysisId;
     }
@@ -15,6 +22,8 @@ public class AnalysisHasResourceEntity {
         this.analysisId = analysisId;
     }
 
+    @Id
+    @Column(name = "resource_id", nullable = false, insertable = true, updatable = true)
     public int getResourceId() {
         return resourceId;
     }

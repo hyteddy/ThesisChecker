@@ -1,33 +1,40 @@
 package com.thesischecker.dto;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
 
 /**
- * Created by awilczyn on 12.04.2014.
+ * Created by awilczyn on 17.05.2014.
  */
+@Entity
+@Table(name = "resource", schema = "", catalog = "thesis")
 public class ResourceEntity {
-    private Long id;
+    private int id;
     private String name;
     private String description;
     private String fileType;
     private String filePath;
     private String plainText;
+    private Integer userId;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private UserEntity userEntity = new UserEntity();
-    private Set<AnalysisEntity> analysisEntitySet = new HashSet<AnalysisEntity>();
+    private UserEntity User;
+    private Collection<AnalysisEntity> Analysis;
 
-    public Long getId() {
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getName() {
         return name;
     }
@@ -36,6 +43,8 @@ public class ResourceEntity {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getDescription() {
         return description;
     }
@@ -44,6 +53,8 @@ public class ResourceEntity {
         this.description = description;
     }
 
+    @Basic
+    @Column(name = "file_type", nullable = true, insertable = true, updatable = true, length = 255)
     public String getFileType() {
         return fileType;
     }
@@ -52,6 +63,8 @@ public class ResourceEntity {
         this.fileType = fileType;
     }
 
+    @Basic
+    @Column(name = "file_path", nullable = true, insertable = true, updatable = true, length = 255)
     public String getFilePath() {
         return filePath;
     }
@@ -60,6 +73,8 @@ public class ResourceEntity {
         this.filePath = filePath;
     }
 
+    @Basic
+    @Column(name = "plain_text", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getPlainText() {
         return plainText;
     }
@@ -68,6 +83,18 @@ public class ResourceEntity {
         this.plainText = plainText;
     }
 
+    @Basic
+    @Column(name = "user_id", nullable = true, insertable = true, updatable = true)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "created_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -76,6 +103,8 @@ public class ResourceEntity {
         this.createdAt = createdAt;
     }
 
+    @Basic
+    @Column(name = "updated_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getUpdatedAt() {
         return updatedAt;
     }
@@ -84,28 +113,14 @@ public class ResourceEntity {
         this.updatedAt = updatedAt;
     }
 
+    @Basic
+    @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
     public Timestamp getDeletedAt() {
         return deletedAt;
     }
 
     public void setDeletedAt(Timestamp deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
-
-    public Set<AnalysisEntity> getAnalysisEntitySet() {
-        return analysisEntitySet;
-    }
-
-    public void setAnalysisEntitySet(Set<AnalysisEntity> analysisEntitySet) {
-        this.analysisEntitySet = analysisEntitySet;
     }
 
     @Override
@@ -124,7 +139,41 @@ public class ResourceEntity {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (plainText != null ? !plainText.equals(that.plainText) : that.plainText != null) return false;
         if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
 
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (fileType != null ? fileType.hashCode() : 0);
+        result = 31 * result + (filePath != null ? filePath.hashCode() : 0);
+        result = 31 * result + (plainText != null ? plainText.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        return result;
+    }
+
+    @OneToOne
+    public UserEntity getUser() {
+        return User;
+    }
+
+    public void setUser(UserEntity user) {
+        User = user;
+    }
+
+    @ManyToMany(mappedBy = "Resources")
+    public Collection<AnalysisEntity> getAnalysis() {
+        return Analysis;
+    }
+
+    public void setAnalysis(Collection<AnalysisEntity> analysis) {
+        Analysis = analysis;
     }
 }

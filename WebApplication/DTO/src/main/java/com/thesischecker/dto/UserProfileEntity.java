@@ -1,12 +1,15 @@
 package com.thesischecker.dto;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by awilczyn on 12.04.2014.
+ * Created by awilczyn on 17.05.2014.
  */
+@Entity
+@Table(name = "user_profile", schema = "", catalog = "thesis")
 public class UserProfileEntity {
-    private Long id;
+    private int id;
     private Integer userId;
     private String firstName;
     private String lastName;
@@ -18,14 +21,18 @@ public class UserProfileEntity {
     private Timestamp deletedAt;
     private UserEntity User;
 
-    public Long getId() {
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "user_id", nullable = true, insertable = true, updatable = true)
     public Integer getUserId() {
         return userId;
     }
@@ -34,6 +41,8 @@ public class UserProfileEntity {
         this.userId = userId;
     }
 
+    @Basic
+    @Column(name = "first_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getFirstName() {
         return firstName;
     }
@@ -42,6 +51,8 @@ public class UserProfileEntity {
         this.firstName = firstName;
     }
 
+    @Basic
+    @Column(name = "last_name", nullable = true, insertable = true, updatable = true, length = 255)
     public String getLastName() {
         return lastName;
     }
@@ -50,6 +61,8 @@ public class UserProfileEntity {
         this.lastName = lastName;
     }
 
+    @Basic
+    @Column(name = "address", nullable = true, insertable = true, updatable = true, length = 255)
     public String getAddress() {
         return address;
     }
@@ -58,6 +71,8 @@ public class UserProfileEntity {
         this.address = address;
     }
 
+    @Basic
+    @Column(name = "postal_code", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPostalCode() {
         return postalCode;
     }
@@ -66,6 +81,8 @@ public class UserProfileEntity {
         this.postalCode = postalCode;
     }
 
+    @Basic
+    @Column(name = "phone", nullable = true, insertable = true, updatable = true, length = 255)
     public String getPhone() {
         return phone;
     }
@@ -74,6 +91,8 @@ public class UserProfileEntity {
         this.phone = phone;
     }
 
+    @Basic
+    @Column(name = "created_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -82,6 +101,8 @@ public class UserProfileEntity {
         this.createdAt = createdAt;
     }
 
+    @Basic
+    @Column(name = "updated_at", nullable = false, insertable = true, updatable = true)
     public Timestamp getUpdatedAt() {
         return updatedAt;
     }
@@ -90,6 +111,8 @@ public class UserProfileEntity {
         this.updatedAt = updatedAt;
     }
 
+    @Basic
+    @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
     public Timestamp getDeletedAt() {
         return deletedAt;
     }
@@ -119,6 +142,22 @@ public class UserProfileEntity {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
+        return result;
+    }
+
+    @OneToOne(mappedBy = "Profile")
     public UserEntity getUser() {
         return User;
     }
