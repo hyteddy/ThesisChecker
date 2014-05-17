@@ -22,7 +22,7 @@ public class AnalysisEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private UserEntity User;
+    private Collection<UserEntity> User;
     private Collection<ResourceEntity> Resources;
 
     @Id
@@ -173,18 +173,16 @@ public class AnalysisEntity {
         return result1;
     }
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    public UserEntity getUser() {
+    @OneToMany(mappedBy = "Analyses")
+    public Collection<UserEntity> getUser() {
         return User;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(Collection<UserEntity> user) {
         User = user;
     }
 
     @ManyToMany
-    @JoinTable(name = "analysis_has_resource", catalog = "thesis", schema = "", joinColumns = @JoinColumn(name = "analysis_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id", nullable = false))
     public Collection<ResourceEntity> getResources() {
         return Resources;
     }

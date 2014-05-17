@@ -17,6 +17,11 @@
         <property name="type">
             <column name="type" sql-type="varchar"/>
         </property>
-        <one-to-one name="User" class="com.thesischecker.dto.UserEntity"/>
+        <set name="User" inverse="true">
+            <key>
+                <column name="id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -17,10 +17,10 @@
         <mapping class="com.thesischecker.dto.ResourceEntity"/>
         <mapping resource="hbm/UserEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserEntity"/>
-        <mapping resource="hbm/UserProfileEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserProfileEntity"/>
-        <mapping resource="hbm/UserUpdateEntity.hbm.xml"/>
+        <mapping resource="hbm/UserProfileEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserUpdateEntity"/>
+        <mapping resource="hbm/UserUpdateEntity.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

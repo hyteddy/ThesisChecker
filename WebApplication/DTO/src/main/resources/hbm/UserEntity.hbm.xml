@@ -35,8 +35,8 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <many-to-one name="Analysis" class="com.thesischecker.dto.AnalysisEntity"/>
         <many-to-one name="Resources" class="com.thesischecker.dto.ResourceEntity"/>
+        <many-to-one name="Analyses" class="com.thesischecker.dto.AnalysisEntity"/>
         <many-to-one name="Updates" class="com.thesischecker.dto.UserUpdateEntity"/>
         <one-to-one name="Profile" class="com.thesischecker.dto.UserProfileEntity"/>
     </class>

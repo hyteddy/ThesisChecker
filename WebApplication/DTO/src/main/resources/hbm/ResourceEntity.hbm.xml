@@ -35,8 +35,13 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <one-to-one name="User" class="com.thesischecker.dto.UserEntity"/>
-        <set name="Analysis" inverse="true" table="analysis_has_resource" schema="" catalog="thesis">
+        <set name="User" inverse="true">
+            <key>
+                <column name="id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
+        </set>
+        <set name="Analyses" inverse="true" table="analysis_has_resource" schema="" catalog="thesis">
             <key>
                 <column name="resource_id" not-null="true"/>
             </key>

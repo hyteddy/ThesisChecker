@@ -19,8 +19,8 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private AnalysisEntity Analysis;
     private ResourceEntity Resources;
+    private AnalysisEntity Analyses;
     private UserProfileEntity Profile;
     private UserUpdateEntity Updates;
 
@@ -162,22 +162,22 @@ public class UserEntity {
 
     @ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
-    public AnalysisEntity getAnalysis() {
-        return Analysis;
-    }
-
-    public void setAnalysis(AnalysisEntity analysis) {
-        Analysis = analysis;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
     public ResourceEntity getResources() {
         return Resources;
     }
 
     public void setResources(ResourceEntity resources) {
         Resources = resources;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
+    public AnalysisEntity getAnalyses() {
+        return Analyses;
+    }
+
+    public void setAnalyses(AnalysisEntity analyses) {
+        Analyses = analyses;
     }
 
     @OneToOne

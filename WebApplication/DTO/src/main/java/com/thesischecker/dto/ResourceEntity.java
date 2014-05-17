@@ -20,8 +20,8 @@ public class ResourceEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private UserEntity User;
-    private Collection<AnalysisEntity> Analysis;
+    private Collection<UserEntity> User;
+    private Collection<AnalysisEntity> Analyses;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -159,21 +159,21 @@ public class ResourceEntity {
         return result;
     }
 
-    @OneToOne
-    public UserEntity getUser() {
+    @OneToMany(mappedBy = "Resources")
+    public Collection<UserEntity> getUser() {
         return User;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(Collection<UserEntity> user) {
         User = user;
     }
 
     @ManyToMany(mappedBy = "Resources")
-    public Collection<AnalysisEntity> getAnalysis() {
-        return Analysis;
+    public Collection<AnalysisEntity> getAnalyses() {
+        return Analyses;
     }
 
-    public void setAnalysis(Collection<AnalysisEntity> analysis) {
-        Analysis = analysis;
+    public void setAnalyses(Collection<AnalysisEntity> analyses) {
+        Analyses = analyses;
     }
 }

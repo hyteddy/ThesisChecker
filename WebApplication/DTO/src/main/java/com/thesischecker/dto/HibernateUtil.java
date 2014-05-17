@@ -15,7 +15,6 @@ import java.util.Map;
  * Created by awilczyn on 12.04.2014.
  */
 public class HibernateUtil {
-
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
 

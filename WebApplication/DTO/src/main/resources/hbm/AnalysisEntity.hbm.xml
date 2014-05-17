@@ -38,10 +38,19 @@
         <property name="deletedAt">
             <column name="deleted_at" sql-type="datetime"/>
         </property>
-        <one-to-one name="User" class="com.thesischecker.dto.UserEntity"/>
-        <set name="Resources">
-            <key/>
-            <many-to-many not-found="ignore" class="com.thesischecker.dto.ResourceEntity"/>
+        <set name="User" inverse="true">
+            <key>
+                <column name="id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
+        </set>
+        <set name="Resources" table="analysis_has_resource" schema="" catalog="thesis">
+            <key>
+                <column name="analysis_id" not-null="true"/>
+            </key>
+            <many-to-many not-found="ignore" class="com.thesischecker.dto.ResourceEntity">
+                <column name="resource_id" not-null="true"/>
+            </many-to-many>
         </set>
     </class>
 </hibernate-mapping>
