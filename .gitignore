@@ -33,6 +33,7 @@ local.properties
 .externalToolBuilders/
 
 # IntelliJ IDEA IDE
-.idea/*
+.idea/
 *.iml
+*.iws
 .buildpath
