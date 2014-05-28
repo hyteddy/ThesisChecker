@@ -11,7 +11,7 @@ import java.util.List;
  * Created by tomek on 28.04.2014.
  */
 @Repository
-public class AnalysisDao extends AbstractDao<AnalysisEntity, String> implements
+public class AnalysisDao extends AbstractDao<AnalysisEntity> implements
         IAnalysisDao {
 
     /**
@@ -28,7 +28,7 @@ public class AnalysisDao extends AbstractDao<AnalysisEntity, String> implements
 
     @Override
     public List<AnalysisEntity> findAllAnalysis() {
-        return this.find((Criterion) null);
+        return this.findByCriteria((Criterion) null);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * DAO interface to handle AnalysisEntity DTO
  */
-public interface IAnalysisDao extends IAbstractDao<AnalysisEntity, String> {
+public interface IAnalysisDao extends IAbstractDao<AnalysisEntity> {
 
     /**
      * Save analysis on DB

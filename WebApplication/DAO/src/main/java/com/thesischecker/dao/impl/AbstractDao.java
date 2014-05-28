@@ -7,15 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Implementation AbstractDao
  * @author Tomasz Morek
  */
-public abstract class AbstractDao<E, I extends Serializable> implements
-        IAbstractDao<E, I> {
+public abstract class AbstractDao<E> implements
+        IAbstractDao<E> {
 
     /**
      * Dto class
@@ -60,7 +59,13 @@ public abstract class AbstractDao<E, I extends Serializable> implements
     }
 
     @Override
-    public List find(Criterion criterion) {
+    public List<E> findByQuery(String query) {
+        List<E> result = this.getSession().createQuery(query).list();
+        return result;
+    }
+
+    @Override
+    public List findByCriteria(Criterion criterion) {
         Criteria criteria = this.getSession().createCriteria(this.dtoClass);
         criteria.add(criterion);
         return criteria.list();
