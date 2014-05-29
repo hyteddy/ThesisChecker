@@ -21,6 +21,7 @@ img{
 #identification{
 	float:right;
 	margin-top: 40px;
+	margin-right:10px;
 }
 
 /* content */
@@ -47,15 +48,28 @@ img{
 #bt_2{
 	margin-top: 10px;
 	margin-left: auto;
-	width: 150px;
+	margin-right: auto;
+	width: 98%;
 }
 
 /* button */
 #bt_1{
 	margin-top: 10px;
 	margin-left: auto;
-	width: 100px;
+	margin-right: auto;
+	width: 98%;
 }
+
+#search{
+	float:left;
+}
+
+#search input{
+	margin:0px;
+}
+
+#rightB{
+	float:right;
 
 /* respons */
 @media(min-width:1071px){
