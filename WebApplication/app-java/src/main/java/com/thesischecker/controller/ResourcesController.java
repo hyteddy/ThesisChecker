@@ -1,5 +1,6 @@
 package com.thesischecker.controller;
 
+import com.thesischecker.domain.Resource;
 import com.thesischecker.dto.ResourceEntity;
 import com.thesischecker.models.ResourcesModel;
 import com.thesischecker.services.interfaces.IResourcesService;
@@ -9,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,7 +42,21 @@ public class ResourcesController {
      */
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index() {
-        List<ResourceEntity> resources = this.resourcesService.findAll();
         return new ModelAndView("/resources/index");
+    }
+
+    /**
+     * Search action
+     * @return
+     */
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Resource> search() {
+        List<ResourceEntity> resourceEntities = this.resourcesService.find();
+        List<Resource> resources = new ArrayList<Resource>();
+        for (ResourceEntity resourceEntity : resourceEntities) {
+            resources.add(new Resource(resourceEntity));
+        }
+        return resources;
     }
 }

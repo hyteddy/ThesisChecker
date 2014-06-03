@@ -8,11 +8,13 @@ import java.util.List;
  * Resources DAO interface
  * @author Tomasz Morek
  */
-public interface IResourcesDao extends IAbstractDao<ResourceEntity> {
+public interface IResourcesDao {
 
     /**
-     * Find all resources object
-     * @return
+     * Find Resources by query
+     * @param query
+     * @return List of resources
      */
-    List<ResourceEntity> findAllResources();
+    List<ResourceEntity> findByQuery(String query);
+
 }

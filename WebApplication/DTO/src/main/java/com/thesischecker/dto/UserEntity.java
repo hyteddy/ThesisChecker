@@ -2,6 +2,7 @@ package com.thesischecker.dto;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
  * Created by awilczyn on 17.05.2014.
@@ -19,10 +20,10 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private ResourceEntity Resources;
-    private AnalysisEntity Analyses;
+    private Collection<ResourceEntity> resourceEntities;
+ /*   private AnalysisEntity Analyses;
     private UserProfileEntity Profile;
-    private UserUpdateEntity Updates;
+    private UserUpdateEntity Updates;*/
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -160,17 +161,16 @@ public class UserEntity {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
-    public ResourceEntity getResources() {
-        return Resources;
+    @OneToMany(mappedBy = "userEntity")
+    public Collection<ResourceEntity> getResourceEntities() {
+        return resourceEntities;
     }
 
-    public void setResources(ResourceEntity resources) {
-        Resources = resources;
+    public void setResourceEntities(Collection<ResourceEntity> resourceEntities) {
+        this.resourceEntities = resourceEntities;
     }
 
-    @ManyToOne
+    /*/*@ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
     public AnalysisEntity getAnalyses() {
         return Analyses;
@@ -178,9 +178,9 @@ public class UserEntity {
 
     public void setAnalyses(AnalysisEntity analyses) {
         Analyses = analyses;
-    }
+    }*/
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
     public UserProfileEntity getProfile() {
         return Profile;
@@ -198,5 +198,5 @@ public class UserEntity {
 
     public void setUpdates(UserUpdateEntity updates) {
         Updates = updates;
-    }
+    }*/
 }

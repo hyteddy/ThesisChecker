@@ -11,19 +11,18 @@ import java.util.List;
  * @author Toamsz Morek
  */
 @Repository
-public class ResourcesDao extends AbstractDao<ResourceEntity>
-                          implements IResourcesDao {
+public class ResourcesDao extends AbstractDao implements IResourcesDao {
 
     /**
      * Constructor
      */
     protected ResourcesDao() {
-        super(ResourceEntity.class);
+        super();
     }
 
     @Override
-    public List<ResourceEntity> findAllResources() {
-        String query = "From ResourceEntity";
-        return this.findByQuery(query);
+    public List<ResourceEntity> findByQuery(String query) {
+        List<ResourceEntity> result = this.getSession().createQuery(query).list();
+        return result;
     }
 }

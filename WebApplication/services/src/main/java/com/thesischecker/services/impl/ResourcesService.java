@@ -18,10 +18,11 @@ import java.util.List;
 public class ResourcesService implements IResourcesService {
 
     @Autowired
-    private IResourcesDao resourcesDao;
+    IResourcesDao resourcesDao;
 
     @Override
-    public List<ResourceEntity> findAll() {
-        return this.resourcesDao.findAllResources();
+    public List<ResourceEntity> find() {
+        String query = "From ResourceEntity";
+        return this.resourcesDao.findByQuery(query);
     }
 }
