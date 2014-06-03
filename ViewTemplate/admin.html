@@ -61,8 +61,16 @@
 				</form>
 				</div>
 				<div id="bt_2">
-					<div class="btn btn-success" >ADD</div>
-					<div class="btn btn-inverse" >DELETE</div>
+					<div class="input-group" id="search">
+					  <input type="text" class="form-control" placeholder="SEARCH">
+					  <span class="input-group-btn">
+						<button type="button" class="btn btn-default btn-lg">
+						  <span class="add-on"><i class="icon-search"></i></span>
+						</button>
+					  </span>
+					</div>					
+					<div class="btn btn-inverse" id="rightB">DELETE</div>
+					<div class="btn btn-success" id="rightB">ADD</div>
 				</div>
 				
 			</div>
@@ -121,7 +129,7 @@
 				</form>
 				</div>
 				<div id="bt_1">
-				<div class="btn btn-inverse" >DELETE</div>
+					<div class="btn btn-inverse" id="rightB">DELETE</div>
 				</div>
 			</div>
 		<!-- Prace -->
@@ -154,7 +162,30 @@
 				</form>
 				</div>
 				<div id="bt_1">
-				<div class="btn btn-inverse" >DELETE</div>
+				<!-- <div class="row">
+				  <div class="col-lg-6">
+					<div class="input-group">
+					  <div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+						<ul class="dropdown-menu">
+						  <li><a href="#"></a></li>
+						  <li><a href="#">Another action</a></li>
+						  <li><a href="#">Something else here</a></li>
+						</ul>
+					  </div>
+					  <input type="text" class="form-control">
+					</div>
+				  </div>
+				</div> -->
+					<div class="input-group" id="search">
+					  <input type="text" class="form-control" placeholder="SEARCH">
+					  <span class="input-group-btn">
+						<button type="button" class="btn btn-default btn-lg">
+						  <span class="add-on"><i class="icon-search"></i></span>
+						</button>
+					  </span>
+					</div>
+				<div class="btn btn-inverse" id="rightB">DELETE</div>
 				</div>
 			</div>
 		<!-- Dodawanie -->
