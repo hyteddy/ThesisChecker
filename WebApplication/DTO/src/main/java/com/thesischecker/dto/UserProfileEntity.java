@@ -19,7 +19,7 @@ public class UserProfileEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private UserEntity User;
+//    private UserEntity User;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -157,12 +157,12 @@ public class UserProfileEntity {
         return result;
     }
 
-    @OneToOne(mappedBy = "Profile")
+    /*@OneToOne(mappedBy = "Profile")
     public UserEntity getUser() {
         return User;
     }
 
     public void setUser(UserEntity user) {
         User = user;
-    }
+    }*/
 }

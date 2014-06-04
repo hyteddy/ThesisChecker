@@ -2,13 +2,13 @@ package com.thesischecker.dto;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by awilczyn on 17.05.2014.
  */
 @Entity
-@Table(name = "resource", schema = "", catalog = "thesis")
+@Table(name = "resource", schema = "tomek199_thesis")
 public class ResourceEntity {
     private int id;
     private String name;
@@ -16,12 +16,11 @@ public class ResourceEntity {
     private String fileType;
     private String filePath;
     private String plainText;
-    private Integer userId;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-    private Timestamp deletedAt;
-    private Collection<UserEntity> User;
-    private Collection<AnalysisEntity> Analyses;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date deletedAt;
+    private UserEntity userEntity;
+//    private Collection<AnalysisEntity> Analyses;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -84,18 +83,8 @@ public class ResourceEntity {
     }
 
     @Basic
-    @Column(name = "user_id", nullable = true, insertable = true, updatable = true)
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    @Basic
     @Column(name = "created_at", nullable = false, insertable = true, updatable = true)
-    public Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
@@ -105,7 +94,7 @@ public class ResourceEntity {
 
     @Basic
     @Column(name = "updated_at", nullable = false, insertable = true, updatable = true)
-    public Timestamp getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
@@ -115,7 +104,7 @@ public class ResourceEntity {
 
     @Basic
     @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
-    public Timestamp getDeletedAt() {
+    public Date getDeletedAt() {
         return deletedAt;
     }
 
@@ -123,51 +112,17 @@ public class ResourceEntity {
         this.deletedAt = deletedAt;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ResourceEntity that = (ResourceEntity) o;
-
-        if (id != that.id) return false;
-        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
-        if (deletedAt != null ? !deletedAt.equals(that.deletedAt) : that.deletedAt != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (filePath != null ? !filePath.equals(that.filePath) : that.filePath != null) return false;
-        if (fileType != null ? !fileType.equals(that.fileType) : that.fileType != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (plainText != null ? !plainText.equals(that.plainText) : that.plainText != null) return false;
-        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
-
-        return true;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (fileType != null ? fileType.hashCode() : 0);
-        result = 31 * result + (filePath != null ? filePath.hashCode() : 0);
-        result = 31 * result + (plainText != null ? plainText.hashCode() : 0);
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
-        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
-        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
-        return result;
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
-    @OneToMany(mappedBy = "Resources")
-    public Collection<UserEntity> getUser() {
-        return User;
-    }
-
-    public void setUser(Collection<UserEntity> user) {
-        User = user;
-    }
-
+    /*
     @ManyToMany(mappedBy = "Resources")
     public Collection<AnalysisEntity> getAnalyses() {
         return Analyses;
@@ -175,5 +130,5 @@ public class ResourceEntity {
 
     public void setAnalyses(Collection<AnalysisEntity> analyses) {
         Analyses = analyses;
-    }
+    }*/
 }

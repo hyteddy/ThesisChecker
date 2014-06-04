@@ -1,13 +1,33 @@
 <%@ include file="../header.jsp" %>
 
 <script type="text/javascript">
+	$(function() {
+		$("#resultPanel").hide();
+	});
+
 	function searchResources() {
-		alert("TODO");
+		$.ajax({
+			url: "search",
+			type: "POST", 
+			data: $("form"),
+			mimeType: "text/html; charset=UTF-8",
+			dataType: "json",
+			success: function(data, jqXHR) {
+				var tableContent = "";
+				for (var i = 0; i < data.length; i++) {
+					tableContent += "<tr><td>" + data[i].name + "</td>";
+					tableContent += "<td>" + data[i].fileType + "</td>";
+					tableContent += "<td>" + data[i].user + "</td>";
+					tableContent += "<td>" + data[i].uploadDate + "<td></tr>";
+				}
+				$("#resultPanel").find("table.table-striped tbody").html(tableContent);
+				$("#resultPanel").show();
+			}
+		});
 	}
 </script>
 
 <h2>Resources</h2>
-
 <div class="panel panel-default">
 	<div class="panel-heading"><h2 class="panel-title">Filter</h2></div>
 	<div class="panel-body">		
@@ -53,5 +73,24 @@
 
 	</div>
 </div>
+<div id="resultPanel" class="panel panel-default">
+	<div class="panel-heading">
+		<h2 class="panel-title">Results</h2>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped table-hover">
+			<thead>
+				<th>Name</th>
+				<th>File type</th>
+				<th>User</th>
+				<th>Upload date</th>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+
 
 <%@ include file="../footer.jsp" %>

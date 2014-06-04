@@ -14,8 +14,12 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.blockUI.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+</script>
 
 <body>
 	<nav class="navbar navbar-default" role="navigation">

@@ -1,7 +1,6 @@
 package com.thesischecker.dto;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 /**
  * Created by awilczyn on 17.05.2014.
@@ -13,7 +12,7 @@ public class UserUpdateEntity {
     private Integer userId;
     private String token;
     private String type;
-    private Collection<UserEntity> User;
+//    private Collection<UserEntity> User;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -79,12 +78,12 @@ public class UserUpdateEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "Updates")
+/*    @OneToMany(mappedBy = "Updates")
     public Collection<UserEntity> getUser() {
         return User;
     }
 
     public void setUser(Collection<UserEntity> user) {
         User = user;
-    }
+    }*/
 }

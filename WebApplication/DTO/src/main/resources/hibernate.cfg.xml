@@ -4,23 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://kulisz.eu:3306/mszczygiel_baza</property>
+        <property name="connection.url">jdbc:mysql://46.4.97.245:3306/tomek199_thesis?zeroDateTimeBehavior=convertToNull</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">mszczygiel</property>
-        <property name="connection.password">an4GcJ5FKB4qU97n</property>
+        <property name="connection.username">tomek199_thesis</property>
+        <property name="connection.password">Rvei9QSd</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping resource="hbm/AnalysisEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.AnalysisEntity"/>
-        <mapping resource="hbm/AnalysisHasResourceEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.AnalysisHasResourceEntity"/>
-        <mapping resource="hbm/ResourceEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.ResourceEntity"/>
-        <mapping resource="hbm/UserEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserEntity"/>
         <mapping class="com.thesischecker.dto.UserProfileEntity"/>
-        <mapping resource="hbm/UserProfileEntity.hbm.xml"/>
         <mapping class="com.thesischecker.dto.UserUpdateEntity"/>
-        <mapping resource="hbm/UserUpdateEntity.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
