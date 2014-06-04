@@ -10,49 +10,48 @@
 	<meta name="Resource-type" content="Document" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/style_upload.css" />
+	<link rel="stylesheet" type="text/css" href="css/style_compare.css" />
 	</head>
 <body>
 	<script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/formularz.js"></script>
 
 	<div id="content">
 		<div id="logoz">
 			<div id="logow"><img src="images/nazwa.png" class="img-circle"></div>
 		</div>
 		<div id="identification"><p class="text-info">Adam Kowalski</p></div>
-		<div id="sender">
+		<div class="sender">
 		<form class="form-horizontal">
-			
+			<div class="progress progress-striped active">
+			  <div class="bar" style="width: 80%;"></div>
+			</div>		
 			<div class="control-group">
-				<div class="input-append">
-					<input class="input-wlasne" id="disabledInput" type="text" placeholder="URL" disabled>
-					<input type="file" id="file" name="file" accept="application/msword,application/pdf">
-					<button class="btn" id="chooser" type="button"><i class="icon-folder-open"></i></button>
-				</div>
-			</div>
-			
-			<div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn btn-large btn-primary">Send</button>
+				<div class="controls1">
+				  <select>
+					  <option>Tytuł 1</option>
+					  <option>Tytuł 2</option>
+					  <option>Tytuł 3</option>
+					  <option>Tytuł 4</option>
+					  <option>Tytuł 5</option>
+					</select>
 				</div>
 			</div>
 		</form>	
 		</div>
+		<!-- compare side by side -->
 		
-		<form id="list_doc_w">
-			<select multiple="multiple">
-			  <option>1</option>
-			  <option>2</option>
-			  <option>3</option>
-			  <option>4</option>
-			  <option>5</option>
-			</select>
-		</form>
-		<div id="delete">
-		<div class="btn btn-inverse" >DELETE</div>
-		</div>
+		<div class="hero-unit">
+			<div id="origin">
+				<div id="origin_w">
+				</div>
+			</div>
+			<div id="similar">
+				<div id="similar_w">
+				</div>
+			</div>
+		</div> 
+		
 	</div>
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.thesischecker.dto;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 /**
  * Created by awilczyn on 17.05.2014.
@@ -22,8 +21,8 @@ public class AnalysisEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private Collection<UserEntity> User;
-    private Collection<ResourceEntity> Resources;
+    /*private Collection<UserEntity> User;
+    private Collection<ResourceEntity> Resources;*/
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -173,7 +172,7 @@ public class AnalysisEntity {
         return result1;
     }
 
-    @OneToMany(mappedBy = "Analyses")
+    /*@OneToMany(mappedBy = "Analyses")
     public Collection<UserEntity> getUser() {
         return User;
     }
@@ -189,5 +188,5 @@ public class AnalysisEntity {
 
     public void setResources(Collection<ResourceEntity> resources) {
         Resources = resources;
-    }
+    }*/
 }
