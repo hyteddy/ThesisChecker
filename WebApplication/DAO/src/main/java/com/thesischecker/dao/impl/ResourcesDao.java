@@ -4,6 +4,7 @@ import com.thesischecker.dao.interfaces.IResourcesDao;
 import com.thesischecker.dto.ResourceEntity;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,8 +22,7 @@ public class ResourcesDao extends AbstractDao implements IResourcesDao {
     }
 
     @Override
-    public List<ResourceEntity> findByQuery(String query) {
-        List<ResourceEntity> result = this.getSession().createQuery(query).list();
-        return result;
+    public List<ResourceEntity> findByParameters(Long userId, Date dateFrom, Date dateTo) {
+        return null;
     }
 }

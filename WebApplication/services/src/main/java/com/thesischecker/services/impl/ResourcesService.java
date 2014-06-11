@@ -23,6 +23,6 @@ public class ResourcesService implements IResourcesService {
     @Override
     public List<ResourceEntity> find() {
         String query = "From ResourceEntity";
-        return this.resourcesDao.findByQuery(query);
+        return null;
     }
 }

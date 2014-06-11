@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>google-diff-patch-match</id>
-            <name>google-diff-patch-match</name>
+            <userId>google-diff-patch-match</userId>
             <url>http://google-diff-match-patch.googlecode.com/svn/trunk/maven/</url>
         </repository>
     </repositories>

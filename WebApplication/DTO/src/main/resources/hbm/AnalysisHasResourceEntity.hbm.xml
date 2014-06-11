@@ -4,14 +4,14 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.dto.AnalysisHasResourceEntity" table="analysis_has_resource" schema=""
+    <class userId="com.thesischecker.dto.AnalysisHasResourceEntity" table="analysis_has_resource" schema=""
            catalog="thesis">
         <composite-id mapped="true" class="com.thesischecker.dto.AnalysisHasResourceEntityPK">
-            <key-property name="analysisId">
-                <column name="analysis_id" sql-type="int" not-null="true"/>
+            <key-property userId="analysisId">
+                <column userId="analysis_id" sql-type="int" not-null="true"/>
             </key-property>
-            <key-property name="resourceId">
-                <column name="resource_id" sql-type="int" not-null="true"/>
+            <key-property userId="resourceId">
+                <column userId="resource_id" sql-type="int" not-null="true"/>
             </key-property>
         </composite-id>
     </class>

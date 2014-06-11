@@ -1,7 +1,12 @@
 package com.thesischecker.models;
 
+import com.thesischecker.domain.User;
+import com.thesischecker.dto.UserProfileEntity;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Thesis model class
@@ -9,27 +14,30 @@ import java.util.Date;
  */
 public class ResourcesModel implements Serializable {
 
+    /**
+     * Model name
+     */
     public static final String MODEL_NAME = "resourcesModel";
 
     /**
-     * Resource name
+     * Resource userId
      */
-    private String name;
+    private Long userId;
 
     /**
-     * Filetype
+     * Upload date from
      */
-    private String fileType;
+    private Date dateFrom;
 
     /**
-     * User that create resource
+     * Upload date to
      */
-    private String user;
+    private Date dateTo;
 
     /**
-     * Resource create date
+     * Users list
      */
-    private Date creationDate;
+    private List<User> usersList;
 
     /**
      * Default constructor
@@ -37,49 +45,43 @@ public class ResourcesModel implements Serializable {
     public ResourcesModel() {
     }
 
-    /**
-     * Constructor
-     * @param name
-     * @param fileType
-     * @param user
-     * @param creationDate
-     */
-    public ResourcesModel(String name, String fileType, String user, Date creationDate) {
-        this.name = name;
-        this.fileType = fileType;
-        this.user = user;
-        this.creationDate = creationDate;
+    public ResourcesModel(List<UserProfileEntity> users) {
+        this.usersList = new ArrayList<User>();
+        for (UserProfileEntity object : users) {
+            User user = new User(object.getUserId(), object.getFirstName(), object.getLastName());
+            this.usersList.add(user);
+        }
     }
 
-    public String getName() {
-        return name;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String getFileType() {
-        return fileType;
+    public Date getDateFrom() {
+        return dateFrom;
     }
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
-    public String getUser() {
-        return user;
+    public Date getDateTo() {
+        return dateTo;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public List<User> getUsersList() {
+        return usersList;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setUsersList(List<User> usersList) {
+        this.usersList = usersList;
     }
 }

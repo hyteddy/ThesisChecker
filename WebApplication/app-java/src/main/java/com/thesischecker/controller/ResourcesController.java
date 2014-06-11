@@ -2,8 +2,10 @@ package com.thesischecker.controller;
 
 import com.thesischecker.domain.Resource;
 import com.thesischecker.dto.ResourceEntity;
+import com.thesischecker.dto.UserProfileEntity;
 import com.thesischecker.models.ResourcesModel;
 import com.thesischecker.services.interfaces.IResourcesService;
+import com.thesischecker.services.interfaces.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +25,17 @@ import java.util.List;
 @RequestMapping(value = "/resources")
 public class ResourcesController {
 
+    /**
+     * Resources service
+     */
     @Autowired
     private IResourcesService resourcesService;
+
+    /**
+     * Users service
+     */
+    @Autowired
+    private IUsersService usersService;
 
     /**
      * Initialize model attribute
@@ -33,7 +44,8 @@ public class ResourcesController {
      */
     @ModelAttribute(value = ResourcesModel.MODEL_NAME)
     public ResourcesModel initModelAttribute(Model model) {
-        return new ResourcesModel();
+        List<UserProfileEntity> users = this.usersService.getFullNames();
+        return new ResourcesModel(users);
     }
 
     /**

@@ -33,37 +33,32 @@
 	<div class="panel-body">		
 		<form:form method="POST" class="form-horizontal" modelAttribute="resourcesModel">
 			<div class="row">
-				<div class="col-md-5">
+				<div class="col-md-4">
 					<div class="form-group">
-						<label for="name" class="col-md-5 control-label">Name</label>
+						<label for="userId" class="col-md-5 control-label">User</label>
 						<div class="col-md-7">
-							<form:input path="name" class="form-control"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="user" class="col-md-5 control-label">User</label>
-						<div class="col-md-7">
-							<form:select path="user" class="form-control">
+							<form:select path="userId" class="form-control">
 								<option value="-1">---</option>
+								<c:forEach var="user" items="${resourcesModel.usersList}">
+									<option value="${user.id}">${user.getFullName()}</option>
+								</c:forEach>
 							</form:select>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-4">
 					<div class="form-group">
-						<label for="fileType" class="col-md-5 control-label">File type</label>
+						<label for="dateFrom" class="col-md-5 control-label">Date from</label>
 						<div class="col-md-7">
-							<form:select path="fileType" class="form-control">
-								<option value="-1">---</option>
-								<option value="pdf">PDF</option>
-								<option value="docx">docx</option>
-							</form:select>
+							<form:input path="dateFrom" class="form-control"/>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
 					<div class="form-group">
-						<label for="date" class="col-md-5 control-label">Creation date</label>
+						<label for="dateTo" class="col-md-5 control-label">Date to</label>
 						<div class="col-md-7">
-							<form:input path="creationDate" class="form-control"/>
+							<form:input path="dateTo" class="form-control"/>
 						</div>
 					</div>
 				</div>

@@ -4,37 +4,37 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.dto.UserProfileEntity" table="user_profile" schema="" catalog="thesis">
-        <id name="id">
-            <column name="id" sql-type="int" not-null="true"/>
+    <class userId="com.thesischecker.dto.UserProfileEntity" table="user_profile" schema="" catalog="thesis">
+        <id userId="id">
+            <column userId="id" sql-type="int" not-null="true"/>
         </id>
-        <property name="userId">
-            <column name="user_id" sql-type="int"/>
+        <property userId="userId">
+            <column userId="user_id" sql-type="int"/>
         </property>
-        <property name="firstName">
-            <column name="first_name" sql-type="varchar"/>
+        <property userId="firstName">
+            <column userId="first_name" sql-type="varchar"/>
         </property>
-        <property name="lastName">
-            <column name="last_name" sql-type="varchar"/>
+        <property userId="lastName">
+            <column userId="last_name" sql-type="varchar"/>
         </property>
-        <property name="address">
-            <column name="address" sql-type="varchar"/>
+        <property userId="address">
+            <column userId="address" sql-type="varchar"/>
         </property>
-        <property name="postalCode">
-            <column name="postal_code" sql-type="varchar"/>
+        <property userId="postalCode">
+            <column userId="postal_code" sql-type="varchar"/>
         </property>
-        <property name="phone">
-            <column name="phone" sql-type="varchar"/>
+        <property userId="phone">
+            <column userId="phone" sql-type="varchar"/>
         </property>
-        <property name="createdAt">
-            <column name="created_at" sql-type="datetime" not-null="true"/>
+        <property userId="createdAt">
+            <column userId="created_at" sql-type="datetime" not-null="true"/>
         </property>
-        <property name="updatedAt">
-            <column name="updated_at" sql-type="datetime" not-null="true"/>
+        <property userId="updatedAt">
+            <column userId="updated_at" sql-type="datetime" not-null="true"/>
         </property>
-        <property name="deletedAt">
-            <column name="deleted_at" sql-type="datetime"/>
+        <property userId="deletedAt">
+            <column userId="deleted_at" sql-type="datetime"/>
         </property>
-        <one-to-one name="User" class="com.thesischecker.dto.UserEntity"/>
+        <one-to-one userId="User" class="com.thesischecker.dto.UserEntity"/>
     </class>
 </hibernate-mapping>
