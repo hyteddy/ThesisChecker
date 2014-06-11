@@ -1,11 +1,13 @@
 package com.thesischecker.dao.impl;
 
-import com.thesischecker.dto.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.thesischecker.dto.HibernateUtil;
+
 /**
  * Implementation AbstractDao
+ * 
  * @author Tomasz Morek
  */
 public abstract class AbstractDao {
@@ -24,6 +26,7 @@ public abstract class AbstractDao {
 
     /**
      * Get current session from SessionFactory
+     * 
      * @return Session
      */
     protected Session getSession() {
