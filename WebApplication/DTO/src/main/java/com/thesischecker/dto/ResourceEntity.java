@@ -19,7 +19,7 @@ public class ResourceEntity {
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
-    private UserEntity userEntity;
+    //private UserEntity userEntity;
 //    private Collection<AnalysisEntity> Analyses;
 
     @Id
@@ -112,7 +112,7 @@ public class ResourceEntity {
         this.deletedAt = deletedAt;
     }
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     public UserEntity getUserEntity() {
         return userEntity;
@@ -120,7 +120,7 @@ public class ResourceEntity {
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
-    }
+    }*/
 
     /*
     @ManyToMany(mappedBy = "Resources")

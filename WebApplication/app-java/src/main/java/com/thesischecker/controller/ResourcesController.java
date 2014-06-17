@@ -67,7 +67,7 @@ public class ResourcesController {
         List<ResourceEntity> resourceEntities = this.resourcesService.find();
         List<Resource> resources = new ArrayList<Resource>();
         for (ResourceEntity resourceEntity : resourceEntities) {
-            resources.add(new Resource(resourceEntity));
+            //resources.add(new Resource(resourceEntity));
         }
         return resources;
     }

@@ -2,7 +2,6 @@ package com.thesischecker.dto;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 /**
  * Created by awilczyn on 17.05.2014.
@@ -20,7 +19,7 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp deletedAt;
-    private Collection<ResourceEntity> resourceEntities;
+//    private Collection<ResourceEntity> resourceEntities;
  /*   private AnalysisEntity Analyses;
     private UserProfileEntity Profile;
     private UserUpdateEntity Updates;*/
@@ -161,14 +160,14 @@ public class UserEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "userEntity")
+    /*@OneToMany(mappedBy = "userEntity")
     public Collection<ResourceEntity> getResourceEntities() {
         return resourceEntities;
     }
 
     public void setResourceEntities(Collection<ResourceEntity> resourceEntities) {
         this.resourceEntities = resourceEntities;
-    }
+    }*/
 
     /*/*@ManyToOne
     @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
