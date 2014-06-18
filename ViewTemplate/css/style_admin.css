@@ -18,11 +18,13 @@ img{
 }
 
 /* name */
-#identification{
+#identification,#logout,#zn{
 	float:right;
 	margin-top: 40px;
 	margin-right:10px;
 }
+
+
 
 /* content */
 .tabbable{
