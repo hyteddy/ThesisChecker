@@ -15,10 +15,10 @@ public class FileProcessTest extends TestCase {
 
     @Test
     public void testSaveFileOnDisk() throws Exception {
-        URL resourceUrl = getClass().getResource("/test.md");
+      /*  URL resourceUrl = getClass().getResource("/test.md");
         File uploadFile = new File(resourceUrl.getPath());
         FileProcess fileP = new FileProcess(currentDir+"/WebApplication/app-java/src/main/resources/files");
-        fileP.saveFileOnDisk(uploadFile);
+        fileP.saveFileOnDisk(uploadFile);*/
     }
 
     @Test
