@@ -18,9 +18,20 @@ img{
 }
 
 /* name */
-#identification{
+#identification,#logout,#zn{
 	float:right;
 	margin-top: 40px;
+}
+
+
+#zn{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+
+#site2{
+	padding-left:25px;
 }
 
 /* content */
