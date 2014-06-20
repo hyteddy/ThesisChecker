@@ -84,6 +84,10 @@ img{
 	overflow-x:scroll;
 }
 
+#origin_w div{
+	min-width:1200px;
+}
+
 #title{
 	margin-left: 145px;
 	font-family: cursive;
