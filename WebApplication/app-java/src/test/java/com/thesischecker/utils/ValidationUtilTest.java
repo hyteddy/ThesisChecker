@@ -24,5 +24,7 @@ public class ValidationUtilTest {
         Assert.assertEquals(true, ValidationUtil.validateDateRange(dateFrom, dateTo));
         dateTo = "2014-03-04";
         Assert.assertEquals(false, ValidationUtil.validateDateRange(dateFrom, dateTo));
+        dateTo = "2014-07-03";
+        Assert.assertEquals(true, ValidationUtil.validateDateRange(dateFrom, dateTo));
     }
 }
