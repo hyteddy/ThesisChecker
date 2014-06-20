@@ -4,6 +4,7 @@
 	$(function() {
 		$("#resultPanel").hide();
 		$("#errorMessage").hide();
+		$("#infoMessage").hide();
 		$("#dateFrom").datepicker({format: "yyyy-mm-dd"});
 		$("#dateTo").datepicker({format: "yyyy-mm-dd"});
 	});
@@ -21,17 +22,24 @@
 			dataType: "json",
 			success: function(data, jqXHR) {
 				removeErrors();
+				removeInfo();
 				if (data.status != "ERROR") {
 					var tableContent = "";
 					var list = data.list;
-					for (var i = 0; i < list.length; i++) {
-						tableContent += "<tr><td>" + list[i].name + "</td>";
-						tableContent += "<td>" + list[i].fileType + "</td>";
-						tableContent += "<td>" + list[i].user + "</td>";
-						tableContent += "<td>" + list[i].uploadDate + "<td></tr>";
+					if (data.list != null && data.list.length > 0) {
+						for (var i = 0; i < list.length; i++) {
+							tableContent += "<tr><td>" + list[i].name + "</td>";
+							tableContent += "<td>" + list[i].fileType + "</td>";
+							tableContent += "<td>" + list[i].user + "</td>";
+							tableContent += "<td>" + list[i].uploadDate + "<td></tr>";
+						}
+						$("#resultPanel").find("table.table-striped tbody").html(tableContent);
+						$("#resultPanel").show();
+					} else {
+						$("#infoMessage").text(data.successMessage);
+						$("#infoMessage").show();
 					}
-					$("#resultPanel").find("table.table-striped tbody").html(tableContent);
-					$("#resultPanel").show();
+
 				} else {
     				$("#resultPanel").hide();
     				showErrors(data);
@@ -46,6 +54,7 @@
 	<div class="panel-heading"><h2 class="panel-title">Filter</h2></div>
 	<div class="panel-body">		
 	<div id="errorMessage" class="alert alert-danger"></div>
+	<div id="infoMessage" class="alert alert-info"></div>
 		<form:form method="POST" class="form-horizontal" modelAttribute="resourcesModel">
 			<div class="row">
 				<div class="col-md-4">

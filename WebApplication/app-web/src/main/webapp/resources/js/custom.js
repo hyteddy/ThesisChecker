@@ -36,3 +36,7 @@ function removeErrors() {
     $(".form-group").removeClass("has-error");
     $(".validMessage").text("");
 }
+
+function removeInfo() {
+    $("#infoMessage").hide();
+}
