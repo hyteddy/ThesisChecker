@@ -110,3 +110,11 @@ img{
 @media(max-width:1071px){
 	body{width:930px;}
 }
+
+span.equal {
+    background: lightgreen;
+}
+
+span.insert, span.delete {
+    background: pink;
+}
