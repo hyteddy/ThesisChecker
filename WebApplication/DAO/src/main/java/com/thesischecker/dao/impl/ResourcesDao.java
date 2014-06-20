@@ -1,18 +1,15 @@
 package com.thesischecker.dao.impl;
 
-import java.util.List;
+import com.thesischecker.dao.interfaces.IResourcesDao;
+import com.thesischecker.dto.ResourceEntity;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Service;
-
-import com.thesischecker.dao.interfaces.IResourcesDao;
-import com.thesischecker.dto.ResourceEntity;
-import org.springframework.stereotype.Repository;
-
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Resources DAO implementation
@@ -34,7 +31,25 @@ public class ResourcesDao extends AbstractDao implements IResourcesDao {
 
     @Override
     public List<ResourceEntity> findByParameters(Long userId, Date dateFrom, Date dateTo) {
-        return null;
+        Map<String, Object> paramValues = new HashMap<String, Object>();
+        String query = "From ResourceEntity As res ";
+        boolean firstParam = true;
+        if (userId != null && userId != -1) {
+            /*TODO: When resources entity will be correct
+            query += getPrefix(firstParam) + " res.userEntity.id = :userId ";
+            firstParam = false;
+            paramValues.put("userId", userId);*/
+        }
+        if (dateFrom != null) {
+            query += getPrefix(firstParam) + " res.createdAt >= :dateFrom ";
+            firstParam = false;
+            paramValues.put("dateFrom", dateFrom);
+        }
+        if (dateTo != null) {
+            query += getPrefix(firstParam) + " res.createdAt <= :dateTo ";
+            paramValues.put("dateTo", dateTo);
+        }
+        return getSession().createQuery(query).setProperties(paramValues).list();
     }
 
     @Override

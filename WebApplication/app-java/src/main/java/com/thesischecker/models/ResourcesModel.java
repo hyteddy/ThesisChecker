@@ -5,7 +5,6 @@ import com.thesischecker.dto.UserProfileEntity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,12 +26,12 @@ public class ResourcesModel implements Serializable {
     /**
      * Upload date from
      */
-    private Date dateFrom;
+    private String dateFrom;
 
     /**
      * Upload date to
      */
-    private Date dateTo;
+    private String dateTo;
 
     /**
      * Users list
@@ -45,6 +44,22 @@ public class ResourcesModel implements Serializable {
     public ResourcesModel() {
     }
 
+    /**
+     * Constructor
+     * @param userId
+     * @param dateFrom
+     * @param dateTo
+     */
+    public ResourcesModel(Long userId, String dateFrom, String dateTo) {
+        this.userId = userId;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+    }
+
+    /**
+     * Constructor
+     * @param users
+     */
     public ResourcesModel(List<UserProfileEntity> users) {
         this.usersList = new ArrayList<User>();
         for (UserProfileEntity object : users) {
@@ -61,19 +76,19 @@ public class ResourcesModel implements Serializable {
         this.userId = userId;
     }
 
-    public Date getDateFrom() {
+    public String getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(Date dateFrom) {
+    public void setDateFrom(String dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public Date getDateTo() {
+    public String getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(String dateTo) {
         this.dateTo = dateTo;
     }
 

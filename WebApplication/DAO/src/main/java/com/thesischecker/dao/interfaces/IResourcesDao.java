@@ -2,12 +2,8 @@ package com.thesischecker.dao.interfaces;
 
 import com.thesischecker.dto.ResourceEntity;
 
-import com.thesischecker.dto.ResourceEntity;
-
 import java.util.Date;
 import java.util.List;
-
-import com.thesischecker.dto.ResourceEntity;
 
 /**
  * Resources DAO interface

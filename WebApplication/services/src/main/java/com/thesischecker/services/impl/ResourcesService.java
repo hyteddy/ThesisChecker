@@ -1,16 +1,16 @@
 package com.thesischecker.services.impl;
 
-import java.util.List;
-
+import com.thesischecker.dao.interfaces.IResourcesDao;
+import com.thesischecker.dto.ResourceEntity;
+import com.thesischecker.services.interfaces.IResourcesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.thesischecker.dao.interfaces.IResourcesDao;
-import com.thesischecker.dto.ResourceEntity;
-import com.thesischecker.services.interfaces.IResourcesService;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Resources service implementation
@@ -31,9 +31,8 @@ public class ResourcesService implements IResourcesService {
     IResourcesDao resourcesDao;
 
     @Override
-    public List<ResourceEntity> find() {
-        String query = "From ResourceEntity";
-        return null;
+    public List<ResourceEntity> find(Long userId, Date dateFrom, Date dateTo) {
+        return this.resourcesDao.findByParameters(userId, dateFrom, dateTo);
     }
 
     @Override

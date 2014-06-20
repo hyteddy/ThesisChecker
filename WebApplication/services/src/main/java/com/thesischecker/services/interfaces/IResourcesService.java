@@ -1,8 +1,9 @@
 package com.thesischecker.services.interfaces;
 
-import java.util.List;
-
 import com.thesischecker.dto.ResourceEntity;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Resources service interface
@@ -11,7 +12,7 @@ import com.thesischecker.dto.ResourceEntity;
  */
 public interface IResourcesService {
 
-    List<ResourceEntity> find();
+    List<ResourceEntity> find(Long userId, Date dateFrom, Date dateTo);
 
     /**
      * Method for persistence {@link ResourceEntity} class.
