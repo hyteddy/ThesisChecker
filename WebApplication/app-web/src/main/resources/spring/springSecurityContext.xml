@@ -8,22 +8,22 @@
                            http://www.springframework.org/schema/security  
                            http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
   
-   <security:http auto-config="true" >  
-   <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-   <security:intercept-url pattern="/fail2login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-  	<security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />  
-  <security:form-login login-page="/login" default-target-url="/index"  
-   authentication-failure-url="/fail2login" />  
-  <security:logout logout-success-url="/logout" />  
- </security:http>  
+   	<security:http auto-config="true" >  
+	   <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	   <security:intercept-url pattern="/fail2login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	   <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
+	   <security:form-login login-page="/login" default-target-url="/index"  
+	   	authentication-failure-url="/fail2login" />  
+	   <security:logout logout-success-url="/login" />  
+	</security:http>  
   
     <security:authentication-manager>  
-   <security:authentication-provider>   
-     <security:jdbc-user-service data-source-ref="dataSource"    
-      users-by-username-query="select email, password, active from user where email=?"   
-          authorities-by-username-query="select email, role from user where email=?"
-  	 />  
-   </security:authentication-provider>  
- </security:authentication-manager>  
+   		<security:authentication-provider>   
+    		 <security:jdbc-user-service data-source-ref="dataSource"    
+     			 	users-by-username-query="select email, password, active from user where email=?"   
+          			authorities-by-username-query="select email, role from user where email=?"
+  	 		 />  
+   		</security:authentication-provider>  
+ 	</security:authentication-manager>  
   
 </beans> 

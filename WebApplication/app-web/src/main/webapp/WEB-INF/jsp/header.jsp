@@ -37,6 +37,12 @@
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
 	  			</li>
 	  		</ul>
+	  		<ul class="nav navbar-nav" style="float: right;">
+	  			<li>
+	  				<a href='<c:url value="/j_spring_security_logout" />' style> Logout</a>
+	  			</li>
+	  		</ul>
+	  		
 	  	</div>
 	  </div>
 	</nav>
