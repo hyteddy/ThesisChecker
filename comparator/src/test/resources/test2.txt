@@ -1,0 +1,320 @@
+
+
+
+
+
+	Politechnika Krakowska im. Tadeusza Kościuszki 	Wydział Fizyki, Matematyki i Informatyki
+Technologie aplikacji internetowych
+Projekt: Ekstraktor danych z XML Open Document Format (.docx)
+Data oddania:28.05.2014	Studia stacjonarne 2 stopnia 	Kierunek: Informatyka Stosowana 	Rok akademicki: 1	Wykonał: Krzysztof Witek 	Nr albumu: 80588
+
+
+
+
+Cel projektu:
+Utworzenie programu do operacji na plikach w formacie XML Open Document Format (.docx). Program opiera się na przetwarzaniu dokumentów XML w formacie zgodnym ze specyfikacją ECMA 376. Program ma za zadanie wyodrębniać wybrane składniki dokumentu XML (tekst, tabele, obrazy) oraz konwertować cały dokument do HTML z zachowaniem hierarchii oraz zawartości elementów.
+Środowisko implementacyjne:
+Jako platformę sprzętową przyjąłem dostępnego mi Notebooka Samsung NP300V5A z procesorem Intel i3, 4GB RAM oraz systemem operacyjnym Windows 7 x64.
+Jako baza danych wybrana została MariaDB w najnowszej wersji 10.0.11.
+Jako środowisko IDE wybrana została platforma Eclipse SE 4.4.0 Luna, z wtyczką WindowBuilder.
+Stosowane technologie:
+Język programowania:
+Java Standard Edition 8. - Język obiektowy, posiada rozbudowaną bibliotekę funkcji standardowych oraz zewnętrznych bibliotek. Program wykonywany jest na maszynie wirtualnej, co pozwala na uruchamianie programów w Javie na różnych platformach systemowych. Rozbudowane środowiska programistyczne pozwalają na tworzenie i zarządzanie rozległymi projektami.
+Baza danych:
+MariaDB 10.0.11 – Relacyjna baza danych SQL udostępniana na licencji GPL. Kompatybilna z MySQL. Pozwala na łatwe przechowywanie plików w bazie danych w polach typu LONGBLOB. Połączenie z bazą danych odbywać będzie się za pomocą sterownika JDBC.
+Biblioteka graficzna:
+Swing – Biblioteka graficzna należąca do bibliotek standardowych Javy: (‘javax.swing’). Pozwala na tworzenie aplikacji okienkowych niezależnych od systemu, zawiera zestaw podstawowych elementów w gotowym API.
+Dodatkowe biblioteki:
+Apache POI 3.10 FINAL – Biblioteka Javy do edycji plików w formacie OOXML (Office Open XML) Wykorzystuje przetwarzanie zdarzeniowe SAX (Simple API for XML) do operowania dokumentami. Dostępna pod licencją Apachev2.
+Docx4java 3.1.0 – Biblioteka Javy do manipulowania plikami Microsoft Open XML (docx, xlsx, pptx). Wykorzystuje JAXB (Java Architecture for XML Binding) do tworzenia reprezentacji obiektowej dokumentu w pamięci (DOM). Dostępna pod licencją ASLv2.
+RSyntaxTextArea 2.5.2 – Biblioteka Javy do prezentacji i edycji różnego rodzaju formatów tekstu. Pozwala na kolorowanie składni elementów języków (np. java lub XML). Biblioteka napisana w Javie oparta na elementach biblioteki Swing. Proste API odzwierciedla działanie bibliotek podstawowych Javy. Obecna wersja posiada możliwość kolorowania składni potrzebnych języków: XML, HTML.
+Inne technologie:
+SQL - strukturalny język zapytań używany do tworzenia, modyfikowania baz danych oraz do umieszczania i pobierania danych z baz danych. Język SQL jest językiem deklaratywnym. Decyzję o sposobie przechowywania i pobrania danych pozostawia się systemowi zarządzania bazą danych (DBMS). Z technicznego punktu widzenia, SQL jest podjęzykiem danych. Oznacza to, że jest on wykorzystywany wyłącznie do komunikacji z bazą danych. Nie posiada on cech pozwalających na tworzenie kompletnych programów.
+HTML - hipertekstowy język znaczników, obecnie szeroko wykorzystywany do tworzenia stron internetowych. HTML pozwala opisać strukturę informacji zawartych wewnątrz strony internetowej, nadając znaczenie poszczególnym fragmentom tekstu formując hiperłącza, akapity, nagłówki, listy oraz osadza w tekście dokumentu obiekty plikowe np. multimedia bądź elementy baz danych np. interaktywne formularze danych.
+XML - uniwersalny język formalny przeznaczony do reprezentowania różnych danych w strukturalizowany sposób. XML jest niezależny od platformy, co umożliwia łatwą wymianę dokumentów pomiędzy heterogenicznymi (różnymi) systemami i znacząco przyczyniło się do popularności tego języka w dobie Internetu. XML jest standardem rekomendowanym oraz specyfikowanym przez organizację W3C.
+Office Open XML – to otwarty standard ISO dokumentów elektronicznych , takich jak dokumenty tekstowe, arkusze kalkulacyjne czy prezentacje multimedialne. Specyfikacja została opracowana i promowana przez Microsoft. Według firmy głównym celem jest wsteczna zgodność z istniejącymi dokumentami w formatach Microsoft Office oraz pełna obsługa funkcji oferowanych przez ten pakiet. Office Open XML ma umożliwić:
+automatyczne generowanie dokumentów na podstawie danych biznesowych,
+wydobywanie danych biznesowych z dokumentów przez aplikacje biznesowe,
+uczynienie zastosowań dostępnymi na różnych urządzeniach, także mobilnych,
+utrzymanie i konserwacja dokumentów.
+Dla języka C# Microsoft w kwietniu 2009 roku opublikował pakiet SDK do manipulacji dokumentów w formacie OOXML, automatyzujący standardowe operacje na plikach w tym formacie.
+Document Object Model (DOM) sposób reprezentacji złożonych dokumentów XML i HTML w postaci modelu obiektowego. Model ten jest niezależny od platformy i języka programowania. Plik XML reprezentowany jest za pomocą drzewa elementów.
+
+
+
+
+Specyfikacja Aplikacji
+Wymagania funkcjonalne:
+Wymagania podstawowe:
+Ekstrakcja metadanych z Docx
+Ekstrakcja tekstu z Docx
+Ekstrakcja tabel z Docx
+Ekstrakcja obrazów z Docx
+Konwersja Docx do HTML
+Przeszukiwanie bazy danych wg tytułu, autora i słów kluczowych
+Wejście/wyjście:
+Wczytywanie pliku Docx z dysku
+Wczytywanie pliku Docx z bazy danych
+Wstawianie Docx do bazy danych
+Wstawianie HTML do bazy danych
+Zapis obrazów do bazy danych
+Zapis Docx do pliku
+Zapis HTML do pliku
+Zapis obrazów do plików
+Zapis tabel do plików (format CSV)
+Prezentacja:
+Interfejs graficzny
+Przegląd formy XML pliku Docx
+Podgląd HTML
+Podgląd obrazów
+Podgląd tabel
+Wymagania niefunkcjonalne:
+Możliwość pracy offline (bez dostępu do bazy danych)
+Przenośność aplikacji
+Wydajność
+Łatwość użytkowania
+Środowisko operacyjne
+
+
+Diagram Use Case
+
+
+Aktor (użytkownik programu) na starcie ma możliwość Otwarcia dokumentu docx z pliku lub przeszukania bazy już posiadanych plików. Po wczytaniu wybranego pliku użytkownik ma możliwość ekstrakcji wybranych elementów (tekst, obrazy, tabele, forma XML), oraz konwersji do innych formatów. W wyniku ekstrakcji użytkownik dostaje obiekty reprezentujące wybrane elementy, które może zapisać na dysk w odpowiednim formacie. Możliwe jest również przeglądanie uzyskanych elementów wewnątrz aplikacji.
+Po ukończeniu operacji na pliku, użytkownik ma możliwość zapisu pliku do bazy lub na dysk.
+
+
+Diagram klas
+Warstwa logiki:
+Klasa DocxContainer zawiera strukturę pliku docx, oraz udostępnia metody należące do interfejsów HTMLConverter, TextExtractor, ImageExtractor oraz TableExtractor. W wyniku konwersji do HTML otrzymywany jest obiekt typu HTMLContainer, zawiera on strukturę HTML w polu tekstowym oraz umożliwia on zapis do pliku za pomocą interfejsu FileHandler. Wraz z plikiem HTML zapisywane są obrazy osadzane na stronie. W wyniku ekstrakcji tekstu, otrzymywany jest obiekt typu TextContainer, zawierający tekst i umożliwiający zapis do pliku w formacie txt. W wyniku ekstrakcji obrazów zwracana jest lista obiektów ImageContainer. Każdy z obiektów ImageContainer zawiera dane o nazwie pliku graficznego, formacie kodowania pliku oraz właściwym kodzie binarnym obrazu. Obrazy mogą być zapisane do formatów jpg, gif, bmp i png. W wyniku ekstrakcji tabel otrzymywana jest lista obiektów TableContainer, zawierajaca dane tekstowe z tabel dokumentu. Tabele mogą być zapisane w formacie CSV (comma separated values).
+Warstwa prezentacji:
+Klasa HTMLViewer pozwala na przeglądanie obiektów HTMLContainer z uwzględnieniem kodowania i z kolorowaniem składni HTML. Klasa TableViewer pozawala na przeglądanie listy obiektów TableContainer w uproszczonym formacie. Klasa ImageViewer umożliwia przeglądanie listy obrazów i zapis wybranych plików.
+
+Schemat UML struktury bazy danych
+
+Tabela Documents zawiera w pojedynczej encji wpis dotyczący jednego pliku. Wpis zawiera pola:
+id: unikalne ID dokumentu
+Filename: nazwa pliku
+FilePath: ścieżka bezwzględna do pliku
+Creator: autor pliku (metadana pliku docx)
+Created: data utworzenia pliku (pobierana z metadanych pliku docx)
+Title: tytuł dokumentu (metadana docx)
+Subject: temat dokumentu (metadana docx)
+Summary: podsumowanie/streszczenie dokumentu (metadana docx)
+ByteSize: rozmiar pliku w bajtach
+BinaryFile: plik docx w formie binarnej w polu LONGBLOB
+Text: pole opcjonalne zawierające ekstrakt tekstu z pliku
+HTML: pole opcjonalne zawierające formę HTML pliku
+
+Tabela Images zawiera obrazy ekstraktowane z plików docx.
+id: unikalne id obrazka
+DocumentID: ID dokumentu, z którego wyekstraktowano obraz
+BinaryImage: format binarny obrazu w polu LONGBLOB
+
+Tabela Keywords zawiera słowa kluczowe dokumentu
+id: unikalne id słowa
+DocumentID: ID dokumentu, do którego należy słowo kluczowe
+Phrase: Słowo kluczowe
+Powiazania z bazą danych
+Baza danych służy, jako centrum przechowywujące pliki docx, wraz z metadanymi które umożliwiają wyszukiwanie na podstawie: tytułu dokumentu, autora oraz słów kluczowych. Połączenie z bazą danych nie jest konieczne do funkcjonowanie programu. W przypadku pracy offline niemożliwe jest przeszukiwanie bazy danych, oraz zapis do bazy. Pozostałe funkcjonalności są dostępne nawet bez aktywnego połączenia. Połączenie może być wznawiane i przerywane w dowolnym momencie.
+Wymagania i warunki do uruchomienia aplikacji
+Aby uruchomić aplikację, jedynym wymaganiem jest, aby na komputerze hoscie była zainstalowana Java w wersji przynajmniej 1.7u51.
+Aby dostępne była funkcjonalność związana z bazą danych, konieczny jest dostęp do Bazy danych MySQL lub MariaDB z utworzoną strukturą tabel jak w Schemacie UML. Skrypt SQL do utworzenia instancji tej bazy danych dołączony jest do projektu.
+
+
+Opis etapów uruchamiania aplikacji
+Aby uruchomić aplikację wystarczy uruchomić JAR zawierający aplikację. W systemie Windows wystarczy dwukrotne kliknięcie na aplikacji.
+Polecenie pozwalające uruchomienie programu w systemie Linux / MacOS X / Windows:
+	java -jar DocxExtractor.jar
+lub
+	java -jar DocxExtractor.jar view.MainFrame
+Aby połączyć się z bazą danych po uruchomieniu programu. Należy wcisnąć przycisk Connect i podać dane autoryzacyjne. Po zalogowaniu dostępne jest przeszukiwanie i zapis do bazy danych.
+
+
+Interfejs graficzny
+Okno programu po załadowaniu pliku
+
+W polu File Properties wyświetlane są metadane pobierane z pliku docx
+Title – tytuł dokumentu
+Subject – temat dokumentu
+Creator – autor dokumentu
+Revision – wersja dokumentu (zwiększana o 1 po każdej zapisanej modyfikacji)
+Keywords – słowa kluczowe
+Description – opis dokumentu (w wersji polskiej MS Office pole Komentarz)
+Status – status dokumentu
+Identifier – identyfikator dokumentu
+Category – kategoria dokumentu
+Created – data utworzenia dokumentu
+Po otwarciu pliku dostępne są funkcjonalności ekstrakcji wybranych danych:
+Extract Text – ekstrakcja tekstu
+Extract Images – ekstrakcja obrazó
+Extract Tables – ekstrakcja tabel
+Extract XML – ekstrakcja formy XML dokumentu
+Convert to HTML – konwersja do HTML
+Przycisk Connect otwiera okno autentykacji z bazą danych
+Po autentykacji możliwe jest przeszukiwanie bazy danych i zapis do bazy danych.
+
+Okno programu po wybraniu funkcjonalności Ekstrakcji tekstu
+
+Kliknięcie OK pozwala na zapis tekstu do pliku. Przycisk Cancel zamyka okno.
+Okno programu po wybraniu funkcjonalności Ekstrakcji obrazów
+
+Na liście po lewej znajdują się nazwy plików graficznych zawartych w dokumencie. Po wybraniu elementu z listy w oknie po prawej pojawia się podgląd obrazu. Kliknięcie Save pozwala na zapis pliku graficznego w formacie gif, png, jpg i bmp. Kliknięcie OK lub Cancel zamyka okno.
+Okno programu po wybraniu funkcjonalności ekstrakcji XML
+
+Okno przedstawia formę XML dokumentu z kolorowaniem składni. Kliknięcie OK pozwala na zapis pliku. Kliknięcie Cancel zamyka okno.
+Okno zapisu do pliku
+
+Okno zapisu do pliku umożliwia wybranie pliku do zapisu. Automatycznie nakładane są filtry odpowiednich plików w zależności od typu pliku który jest zapisywany.
+Okno połączenia z bazą danych
+
+Okno pozwala zdefiniować parametry połączenia takie jak: adres, port, nazwa bazy danych, użytkownik oraz hasło.
+
+Okno przeglądania bazy danych
+
+Okno wyświetla listę dokumentów umieszczonych w bazie wraz z autorem i tytułem pracy. Umożliwia również przeszukiwanie bazy. Kliknięcie Open wczytuje wybrany plik z bazy.
+
+
+Mechanizmy autentykacji
+Aby funkcjonować offline, nie jest wymagana autentykacja. Aby funkcjonować w połączeniu z bazą danych wystarczy autentykacja połączenia z bazą danych.
+Schemat komunikacji między komponentami  aplikacji.
+Schemat komunikacji obiektów wewnątrz programu opisany jest przy diagramie klas w punkcie Specyfikacja Aplikacji. Wyróżniona jest warstwa logiki oraz warstwa prezentacji. Do programu można dołączyć inne warstwy prezentacji np. interfejs Appletu Javy, który wykorzysta tę samą strukturę logiczną programu.
+Połączenie z bazą danych zarządzane jest przez obiekt DatabaseHandler. Połączenie odbywa się za pomocą sterownika JDBC typu 4 (Pure Java Driver) udostępnianego przez bazę danych MariaDB. Połączenie jest kompatybilne z bazami danych MariaDB oraz MySQL.
+
+Reprezentatywne fragmenty kodu:
+Ekstrakcja tekstu za pomocą Apache POI
+
+	public TextContainer extractText() throws IOException {
+		XWPFWordExtractor ex = new XWPFWordExtractor(doc);
+		TextContainer text = new TextContainer(ex.getText());
+		ex.close();
+		return text;
+	}
+
+Ekstrakcja obrazów za pomocą ApachePOI
+
+	public List<ImageContainer> extractImages() throws IOException {
+		ArrayList<ImageContainer> list = new ArrayList<ImageContainer>();
+		List<XWPFPictureData> pic = doc.getAllPictures();
+		for (XWPFPictureData xwpfPictureData : pic) {
+			String name = xwpfPictureData.getFileName();
+			int pictureType = xwpfPictureData.getPictureType();
+			byte[] data = xwpfPictureData.getData();
+			String fileExtension = xwpfPictureData.suggestFileExtension();
+			ImageContainer img = new ImageContainer(
+					ImageIO.read(new ByteArrayInputStream(data)),
+						name, fileExtension, pictureType);
+			list.add(img);
+		}
+		return list;
+	}
+
+Ekstrakcja tabel za pomocą ApachePOI
+
+	public List<TableContainer> extractTables() {
+		ArrayList<TableContainer> list = new ArrayList<TableContainer>();
+
+		List<XWPFTable> tables = doc.getTables();
+
+		for (XWPFTable table : tables) {
+			List<XWPFTableRow> rows = table.getRows();
+			TableContainer tableContainer = new TableContainer();
+			list.add(tableContainer);
+			for (XWPFTableRow row : rows) {
+				List<XWPFTableCell> cells = row.getTableCells();
+				tableContainer.addRow();
+				for (XWPFTableCell cell : cells) {
+					String text = cell.getText();
+					tableContainer.add(text);
+				}
+			}
+		}
+		return list;
+	}
+Ekstrakcja metadanych za pomocą ApachePOI
+
+	public CoreProperties getProperties()
+	{
+		POIXMLProperties properties = doc.getProperties();
+		CoreProperties core = properties.getCoreProperties();
+		return core;
+	}
+
+Konwersja do HTML wraz z osadzonymi obrazami
+
+	public HTMLContainer convertToHTMLwithImages()
+throws XWPFConverterException, IOException {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		XHTMLOptions options = XHTMLOptions.create();
+		XHTMLConverter.getInstance().convert(doc, out, options);
+		String html = new String(out.toByteArray(),Charset.defaultCharset());
+		List<ImageContainer> images = extractImages();
+		return new HTMLContainer(html,images);
+	}
+
+
+Wyniki przeprowadzonych testów
+Test 1. Uruchamianie aplikacji z konsoli
+	Test ukończony pomyślnie
+Test 2. Uruchamianie aplikacji z systemu Windows
+	Test ukończony pomyślnie
+Test 3. Ładowanie pliku docx
+	Test ukończony pomyślnie
+Test 4. Zapis do pliku docx
+	Test ukończony pomyślnie
+Test 5. Ekstrakcja tekstu z pliku docx
+	Test ukończony pomyślnie
+Test 6. Ekstrakcja obrazów z pliku docx
+	Test ukończony pomyślnie
+Test 7. Zapis obrazów
+	Test ukończony pomyślnie
+Test 8. Ekstrakcja formy XML
+	Test ukończony pomyślnie
+Test 9. Konwersja do HTML
+	Test ukończony pomyślnie (do poprawienia łamanie linii)
+Test 10. Zapis HTML do pliku bez obrazów
+	Test ukończony pomyślnie
+Test 11. Zapis pliku HTML z obrazami
+	Test ukończony pomyślnie
+Test 12. Ekstrakcja metadanych z pliku docx
+	Test ukończony pomyślnie
+Test 13. Połączenie z bazą danych
+	Test ukończony pomyślnie
+Test 14. Wyszukiwanie w bazie danych na podstawie autora, tytułu i nazwy pliku
+	Test ukończony pomyślnie
+Test 15. Otwieranie pliku docx z bazy danych
+	Test ukończony pomyślnie
+Test 16. Zapis plików docx do bazy danych
+	Test ukończony pomyślnie
+Ograniczenia Aplikacji
+Aplikacja obsługuje wyłącznie pliki zgodne ze standardem OOXML zaproponowanym przez Microsoft w 2009 roku. Nie są obsługiwane pliki typu doc z programów Microsoft Office przez 2003. Dokumenty tworzone przez MS Office 2003, nie są w pełni zgodne ze standardem i mogą być niewłaściwie parsowane.
+Zastosowane w projekcie specyficzne podejście
+
+Projekt zbudowany jest w strukturze dwuwarstwowej. Aplikacja posiada odrębne warstwy logiki oraz prezentacji. Możliwa jest implementacja innych mechanizmów prezentacji wyników, przy dalszym wykorzystaniu z logiki programu.
+Możliwe rozszerzenia projektu
+Aplikacje można rozszerzyć o następujące funkcjonalności;
+Obsługa plików Open Document Format (ODF) zgodny z Open Office
+Obsługa plików Doc w wersji MS Office 1997-2003
+Konwersja do PDF
+Konwersja do ODF
+Podsumowanie
+Aplikacja posiada wszystkie zaplanowane funkcjonalności. Efektywnie zarządza pamięcią i efektywnie dokonuje konwersji i ekstrakcji elementów.
+
+
+Bibliografia
+Angelozerr. (2012, 12 6). Angelo's Blog. Pobrano 4 16, 2014 z lokalizacji http://angelozerr.wordpress.com/2012/12/06/how-to-convert-docxodt-to-pdfhtml-with-java/
+Apache. (2014). POI API Documentation. Pobrano 4 2014, 6 z lokalizacji http://poi.apache.org/apidocs/index.html
+Document Object Model (DOM) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Document_Object_Model
+Extensible Markup Language (XML). (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.w3.org/XML/
+Horstmann, C. S. i Cornell, G. (2013). Core Java, Volume II -- Advanced Features (9th edition).
+International, E. (brak daty). OFFICE OPEN XML. Pobrano 4 19, 2014 z lokalizacji http://www.ecma-international.org/news/TC45_current_work/OpenXML%20White%20Paper.pdf
+JAXB - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding
+Knowledge Base - MariaDB. (brak daty). Pobrano 4 19, 2014 z lokalizacji https://mariadb.com/kb/en/
+Open Office XML - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji Wikipedia: http://pl.wikipedia.org/wiki/Office_Open_XML
+Plutext Pty Ltd. (2008). Docx4java Documentation. Pobrano z lokalizacji http://www.docx4java.org/trac/docx4j
+Simple API for XML (SAX) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Simple_API_for_XML
+Standard ECMA-376 Office Open XML File Formats . (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.ecma-international.org/publications/standards/Ecma-376.htm
+XML - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/XML
+XML Schema (XSD) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/XML_Schema_%28W3C%29
+XML Tutorial - W3School. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.w3schools.com/xml/default.ASP
+
+

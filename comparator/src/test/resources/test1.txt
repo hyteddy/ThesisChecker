@@ -1,0 +1,68 @@
+	Politechnika Krakowska im. Tadeusza Kościuszki 	Wydział Fizyki, Matematyki i Informatyki
+Technologie aplikacji internetowych
+Projekt: Ekstraktor danych z XML Open Document Format (.docx)
+Data oddania:	Studia stacjonarne 2 stopnia 	Kierunek: Informatyka Stosowana 	Rok akademicki: 1	Wykonał: Krzysztof Witek 	Nr albumu: 80588
+
+
+Cel projektu:
+Utworzenie programu do operacji na plikach w formacie XML Open Document Format (.docx). Program opiera się na przetwarzaniu dokumentów XML w formacie zgodnym ze specyfikacją ECMA 376. Program ma za zadanie wyodrębniać wybrane składniki dokumentu XML (tekst, tabele, obrazy) oraz konwertować cały dokument do HTML z zachowaniem hierarchii oraz zawartości elementów.
+Środowisko implementacyjne:
+Jako platformę sprzętową przyjąłem dostępnego mi Notebooka Samsung NP300V5A z procesorem Intel i3, 4GB RAM oraz systemem operacyjnym Windows 7 x64.
+Jako baza danych wybrana została MariaDB w najnowszej wersji 10.0.11.
+Jako środowisko IDE wybrana została platforma Eclipse SE 4.4.0 Luna, z wtyczką WindowBuilder.
+Stosowane technologie:
+Język programowania:
+Java Standard Edition 8. - Język obiektowy, posiada rozbudowaną bibliotekę funkcji standardowych oraz zewnętrznych bibliotek. Program wykonywany jest na maszynie wirtualnej, co pozwala na uruchamianie programów w Javie na różnych platformach systemowych. Rozbudowane środowiska programistyczne pozwalają na tworzenie i zarządzanie rozległymi projektami.
+Baza danych:
+MariaDB 10.0.11 – Relacyjna baza danych SQL udostępniana na licencji GPL. Kompatybilna z MySQL. Pozwala na łatwe przechowywanie plików w bazie danych w polach typu LONGBLOB. Połączenie z bazą danych odbywać będzie się za pomocą sterownika JDBC.
+Biblioteka graficzna:
+Swing – Biblioteka graficzna należąca do bibliotek standardowych Javy: (‘javax.swing’). Pozwala na tworzenie aplikacji okienkowych niezależnych od systemu, zawiera zestaw podstawowych elementów w gotowym API.
+Dodatkowe biblioteki:
+Apache POI 3.10 FINAL – Biblioteka Javy do edycji plików w formacie OOXML (Office Open XML) Wykorzystuje przetwarzanie zdarzeniowe SAX (Simple API for XML) do operowania dokumentami. Dostępna pod licencją Apachev2.
+Docx4java 3.1.0 – Biblioteka Javy do manipulowania plikami Microsoft Open XML (docx, xlsx, pptx). Wykorzystuje JAXB (Java Architecture for XML Binding) do tworzenia reprezentacji obiektowej dokumentu w pamięci (DOM). Dostępna pod licencją ASLv2.
+
+Biblioteka JODConverter
+
+Specyfikacja Aplikacji
+Analiza wymagań
+Wymagania funkcjonalne:
+Wczytywanie pliku Docx z dysku
+Wczytywanie pliku Docx z bazy danych
+Ekstrakcja tekstu z Docx
+Ekstrakcja tabel z Docx
+Ekstrakcja obrazów z Docx
+Konwersja Docx do HTML
+Przegląd formy XML docx
+Podgląd HTML
+Podgląd obrazów
+Podgląd tabel
+Wstawianie Docx do bazy danych
+Wstawianie HTML do bazy danych
+Zapis Docx do pliku
+Zapis HTML do pliku
+Zapis obrazów do plików
+Zapis tabel do plików (format CSV)
+
+Diagram Use Case
+
+Diagram klas
+
+
+Bibliografia
+Angelozerr. (2012, 12 6). Angelo's Blog. Pobrano 4 16, 2014 z lokalizacji http://angelozerr.wordpress.com/2012/12/06/how-to-convert-docxodt-to-pdfhtml-with-java/
+Apache. (2014). POI API Documentation. Pobrano 4 2014, 6 z lokalizacji http://poi.apache.org/apidocs/index.html
+Document Object Model (DOM) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Document_Object_Model
+Extensible Markup Language (XML). (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.w3.org/XML/
+Horstmann, C. S. i Cornell, G. (2013). Core Java, Volume II -- Advanced Features (9th edition).
+International, E. (brak daty). OFFICE OPEN XML. Pobrano 4 19, 2014 z lokalizacji http://www.ecma-international.org/news/TC45_current_work/OpenXML%20White%20Paper.pdf
+JAXB - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Java_Architecture_for_XML_Binding
+Knowledge Base - MariaDB. (brak daty). Pobrano 4 19, 2014 z lokalizacji https://mariadb.com/kb/en/
+Open Office XML - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji Wikipedia: http://pl.wikipedia.org/wiki/Office_Open_XML
+Plutext Pty Ltd. (2008). Docx4java Documentation. Pobrano z lokalizacji http://www.docx4java.org/trac/docx4j
+Simple API for XML (SAX) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/Simple_API_for_XML
+Standard ECMA-376 Office Open XML File Formats . (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.ecma-international.org/publications/standards/Ecma-376.htm
+XML - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/XML
+XML Schema (XSD) - Wikipedia. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://en.wikipedia.org/wiki/XML_Schema_%28W3C%29
+XML Tutorial - W3School. (brak daty). Pobrano 4 19, 2014 z lokalizacji http://www.w3schools.com/xml/default.ASP
+
+
