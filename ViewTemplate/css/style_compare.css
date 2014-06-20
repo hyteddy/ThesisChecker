@@ -84,9 +84,9 @@ img{
 	overflow-x:scroll;
 }
 
-#origin_w div{
-	min-width:1200px;
-}
+ #origin_w div, #similar_w div{
+	white-space: nowrap
+} 
 
 #title{
 	margin-left: 145px;
