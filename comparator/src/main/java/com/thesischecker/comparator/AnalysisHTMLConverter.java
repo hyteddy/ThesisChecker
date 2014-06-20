@@ -55,11 +55,19 @@ public class AnalysisHTMLConverter
             switch (diff.getOperation())
             {
                 case EQUAL:
-                    // fill difference with empty lines
+                    // fill difference with non empty lines for stupid css formatting reasons
                     for (; leftLines < rightLines; leftLines++)
-                        left.append(EMPTY_LINE);
+                    {
+                        left.append(DELETE_TAG_START);
+                        left.append(".");
+                        left.append(DELETE_TAG_END);
+                    }
                     for (; rightLines < leftLines; rightLines++)
-                        right.append(EMPTY_LINE);
+                    {
+                        right.append(INSERT_TAG_START);
+                        right.append(".");
+                        right.append(INSERT_TAG_END);
+                    }
                     for (String line : lines)
                     {
                         left.append(EQUAL_TAG_START);
