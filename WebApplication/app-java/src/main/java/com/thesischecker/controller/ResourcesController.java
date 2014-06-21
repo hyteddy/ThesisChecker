@@ -9,10 +9,7 @@ import com.thesischecker.services.interfaces.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -70,5 +67,13 @@ public class ResourcesController {
             resources.add(new Resource(resourceEntity));
         }
         return resources;
+    }
+
+    /**
+     * Add method
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    private ModelAndView add(RequestParam file, RequestParam title) {
+        return new ModelAndView("/resources/add");
     }
 }
