@@ -32,13 +32,13 @@ public class ResourcesDao extends AbstractDao implements IResourcesDao {
     @Override
     public List<ResourceEntity> findByParameters(Long userId, Date dateFrom, Date dateTo) {
         Map<String, Object> paramValues = new HashMap<String, Object>();
-        String query = "From ResourceEntity As res ";
+        String query = "From ResourceEntity As res " +
+                       "Left Join Fetch res.userEntity ";
         boolean firstParam = true;
         if (userId != null && userId != -1) {
-            /*TODO: When resources entity will be correct
             query += getPrefix(firstParam) + " res.userEntity.id = :userId ";
             firstParam = false;
-            paramValues.put("userId", userId);*/
+            paramValues.put("userId", userId);
         }
         if (dateFrom != null) {
             query += getPrefix(firstParam) + " res.createdAt >= :dateFrom ";

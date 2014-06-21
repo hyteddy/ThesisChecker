@@ -23,6 +23,7 @@
 			success: function(data, jqXHR) {
 				removeErrors();
 				removeInfo();
+				$("#resultPanel").hide();
 				if (data.status != "ERROR") {
 					var tableContent = "";
 					var list = data.list;
@@ -31,7 +32,7 @@
 							tableContent += "<tr><td>" + list[i].name + "</td>";
 							tableContent += "<td>" + list[i].fileType + "</td>";
 							tableContent += "<td>" + list[i].user + "</td>";
-							tableContent += "<td>" + list[i].uploadDate + "<td></tr>";
+							tableContent += "<td>" + formatDate(list[i].uploadDate) + "<td></tr>";
 						}
 						$("#resultPanel").find("table.table-striped tbody").html(tableContent);
 						$("#resultPanel").show();
@@ -41,7 +42,6 @@
 					}
 
 				} else {
-    				$("#resultPanel").hide();
     				showErrors(data);
 				}
 			}
