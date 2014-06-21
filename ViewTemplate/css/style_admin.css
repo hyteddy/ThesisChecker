@@ -5,7 +5,13 @@ body{
 
 img{
 	background-color:#f5f5f5;
+	width: 85px;
 }
+
+form{
+	margin-top:10px;
+}
+	
 /* logo */
 #logoz{
 	float:left;
@@ -28,6 +34,7 @@ img{
 
 /* content */
 .tabbable{
+	padding-top:30px;
 	clear:both;
 }
 
@@ -62,9 +69,6 @@ img{
 	width: 98%;
 }
 
-#search{
-	float:left;
-}
 
 #search input{
 	margin:0px;

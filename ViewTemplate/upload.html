@@ -20,7 +20,7 @@
 	<div id="content">
 		<div id="logoz">
 			<div id="logow"><img src="images/nazwa.png" class="img-circle"></div>
-			<div id="site2"><a href="compare.html"><i class="icon-ok-sign"></i>CHECK</a></div>
+			<div id="site2"><a href="compare.html"><span class="glyphicon glyphicon-ok-sign"></span>CHECK</a></div>
 		</div>
 		<div id="logout"><a href="#">LogOut</a></div>
 		<div id="zn">/</div>
@@ -29,23 +29,22 @@
 		<form class="form-horizontal">
 			
 			<div class="control-group">
-				<div class="input-append">
-					<input class="input-wlasne" id="disabledInput" type="text" placeholder="URL" disabled>
-					<input type="file" id="file" userId="file" accept="application/msword,application/pdf">
-					<button class="btn" id="chooser" type="button"><i class="icon-folder-open"></i></button>
-				</div>
-			</div>
-			
-			<div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn btn-large btn-primary">Send</button>
-				</div>
-			</div>
+				<div class="col-lg-6">
+					<div class="input-group">
+					  <input type="text" class="form-control" placeholder="URL" disabled>
+					  <input type="file" id="file" userId="file" accept="application/msword,application/pdf">
+					  <span class="input-group-btn">
+						<button class="btn btn-default" id="chooser" type="button"><span class="glyphicon glyphicon-folder-open"></span></button>
+					  </span>
+					</div><!-- /input-group -->
+				</div><!-- /.col-lg-6 -->
+			</div>			
+				<button type="submit" id="bt-send" class="btn btn-primary">Send</button>
 		</form>	
 		</div>
 		
 		<form id="list_doc_w">
-			<select multiple="multiple">
+			<select multiple="multiple" class="form-control">
 			  <option>1</option>
 			  <option>2</option>
 			  <option>3</option>
@@ -54,7 +53,7 @@
 			</select>
 		</form>
 		<div id="delete">
-		<div class="btn btn-inverse" >DELETE</div>
+		<div class="btn btn-danger" >DELETE</div>
 		</div>
 	</div>
 </body>
