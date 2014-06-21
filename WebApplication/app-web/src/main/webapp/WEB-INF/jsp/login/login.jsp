@@ -11,15 +11,18 @@
 	<meta userId="description" content="" />
 	<meta userId="keywords"  content="" />
 	<meta userId="Resource-type" content="Document" />
-	<meta userId="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style_index.css" />
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+	<meta userId="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	
+    <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+   
+    <link href="<c:url value="/resources/css/style_index.css" />" rel="stylesheet">
+    
+	<script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
+	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 
 </head>
 <body>
+	
 
     
 	<div id="content">
@@ -53,14 +56,13 @@
 			</div>
 		</form>
 		</div>
-	</div>
-	
-	<c:if test="${not empty error}">  
+		<c:if test="${not empty error}">  
 	  <div class="errorblock">  
 	   Your login attempt was not successful, try again.  
 	 Caused :  
 	   ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}  
 	  </div>  
  </c:if>  
+	</div>
 </body>
 </html>

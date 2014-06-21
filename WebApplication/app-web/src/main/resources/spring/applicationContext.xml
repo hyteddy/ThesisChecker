@@ -27,6 +27,8 @@
 	    <mvc:annotation-driven />
 	    <mvc:default-servlet-handler default-servlet-name="appServlet" />
 	
+		<mvc:resources location="/resources/" mapping="/resources/**"/>
+	
 		<tx:annotation-driven proxy-target-class="true" />
 		<tx:jta-transaction-manager />
 		

@@ -8,11 +8,14 @@
                            http://www.springframework.org/schema/security  
                            http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
   
-   	<security:http auto-config="true" >  
+   	<security:http auto-config="true">  
 	   <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 	   <security:intercept-url pattern="/fail2login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	   <security:intercept-url pattern="/resources/css/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	   <security:intercept-url pattern="/resources/bootstrap/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	   <security:intercept-url pattern="/resources/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 	   <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
-	   <security:form-login login-page="/login" default-target-url="/test/index"
+	   <security:form-login login-page="/login" default-target-url="/test/index"  
 	   	authentication-failure-url="/fail2login" />  
 	   <security:logout logout-success-url="/login" />  
 	</security:http>  
