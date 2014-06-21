@@ -12,7 +12,7 @@
 	   <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 	   <security:intercept-url pattern="/fail2login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 	   <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
-	   <security:form-login login-page="/login" default-target-url="/index"  
+	   <security:form-login login-page="/login" default-target-url="/test/index"
 	   	authentication-failure-url="/fail2login" />  
 	   <security:logout logout-success-url="/login" />  
 	</security:http>  
