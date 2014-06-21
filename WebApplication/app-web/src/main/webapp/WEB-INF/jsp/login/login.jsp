@@ -28,39 +28,24 @@
 	<div id="content">
 	<h2 class="form-signin-heading">ThesisChecker</h2>
 		<div id="sign_in">
-		<form class="form-horizontal" name="f" action="<c:url value='j_spring_security_check' />"  method='POST'>
-			<div class="control-group">
-			  <label class="control-label" for="inputIcon">LOGIN</label>
-			  <div class="controls">
-				<div class="input-prepend">
-				  <span class="add-on"><i class="icon-user"></i></span>
-				  <input class="span2" name='j_username' id="inputIcon" type="text" placeholder="login" required>
+			<form class="form-horizontal" name="f" action="<c:url value='j_spring_security_check' />"  method='POST'>
+				<div class="form-group" style="margin-left: 15px; margin-right: 15px;">
+					<label for="exampleInputEmail1">Email address</label>
+					<input type="email" name='j_username' class="form-control" placeholder="Enter email" required>
 				</div>
-			  </div>
-			</div>
-			
-			<div class="control-group">
-			  <label class="control-label" for="inputIcon">PASSWORD</label>
-			  <div class="controls">
-				<div class="input-prepend">
-				  <span class="add-on"><i class="icon-star"></i></span>
-				  <input class="span2" name='j_password' id="inputIcon" type="password" placeholder="password" required>
+				<div class="form-group" style="margin-left: 15px; margin-right: 15px;">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" class="form-control" name='j_password' placeholder="Password" required>
 				</div>
-			  </div>
-			</div>
-			
-			<div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn btn-large btn-primary">Sign in</button>
-				</div>
-			</div>
-		</form>
+		
+				<button type="submit" class="btn btn-large btn-primary" style="margin-left: 15px; margin-bottom: 10px;">Sign in</button>
+			</form>
 		</div>
 		<c:if test="${not empty error}">  
 	  <div class="errorblock">  
-	   Your login attempt was not successful, try again.  
-	 Caused :  
-	   ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}  
+	  	Your login attempt was not successful, try again.  
+	 	Caused :  
+	   	${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}  
 	  </div>  
  </c:if>  
 	</div>

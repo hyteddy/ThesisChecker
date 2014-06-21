@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,10 +40,19 @@
 	  			<li>
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
 	  			</li>
+	  			
+	  			<sec:authorize ifAnyGranted="ROLE_ADMIN">
+	  			<li>
+	  				<a href="${pageContext.request.contextPath}/admin/index">Admin panel</a>
+	  			</li>
+	  			</sec:authorize>
 	  		</ul>
 	  		<ul class="nav navbar-nav" style="float: right;">
 	  			<li>
-	  				<a href='<c:url value="/j_spring_security_logout" />' style> Logout</a>
+	  				<label style="padding-top: 15px;"><sec:authentication property="principal.username" /></label>
+	  			</li>
+	  			<li>
+	  				<a href='<c:url value="/j_spring_security_logout" />'> Logout</a>
 	  			</li>
 	  		</ul>
 	  		
