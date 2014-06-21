@@ -52,11 +52,13 @@ public class ResponseUtil {
     }
 
     /**
-     * Constructor
-     * @param status
+     * Constructor to create success response with message without a list
+     * f.eg. if result list is empty
+     * @param successMessage
      */
-    public ResponseUtil(String status) {
-        this.status = status;
+    public ResponseUtil(String successMessage) {
+        this.status = STATUS_SUCCESS;
+        this.successMessage = successMessage;
     }
 
     /**
