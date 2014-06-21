@@ -12,14 +12,19 @@
 	<meta name="keywords"  content="" />
 	<meta name="Resource-type" content="Document" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.fileupload.css" />
+
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.blockUI.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.ui.widget.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.iframe-transport.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.fileupload.js"></script>
 </head>
 <script type="text/javascript">
 	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);

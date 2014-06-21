@@ -49,7 +49,10 @@
 	}
 </script>
 
-<h2>Resources</h2>
+<h2>
+	Resources
+	<a href="${pageContext.request.contextPath}/resources/add" class="btn btn-success pull-right">Add resource</a>
+</h2>
 <div class="panel panel-default">
 	<div class="panel-heading"><h2 class="panel-title">Filter</h2></div>
 	<div class="panel-body">		

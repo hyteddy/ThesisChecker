@@ -1,6 +1,6 @@
 package com.thesischecker.controller;
 
-import com.thesischecker.domain.*;
+import com.thesischecker.domain.Resource;
 import com.thesischecker.dto.ResourceEntity;
 import com.thesischecker.dto.UserProfileEntity;
 import com.thesischecker.models.ResourcesModel;
@@ -59,6 +59,15 @@ public class ResourcesController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("/resources/index");
+    }
+
+    /**
+     * Render add view
+     * @return view name
+     */
+    @RequestMapping(value = "/add", method =  RequestMethod.GET)
+    public ModelAndView add() {
+        return new ModelAndView("/resources/add");
     }
 
     /**
