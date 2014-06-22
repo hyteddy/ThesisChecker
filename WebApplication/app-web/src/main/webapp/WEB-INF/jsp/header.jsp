@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,14 +13,19 @@
 	<meta name="keywords"  content="" />
 	<meta name="Resource-type" content="Document" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.fileupload.css" />
+
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.blockUI.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.ui.widget.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.iframe-transport.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.fileupload.js"></script>
 </head>
 <script type="text/javascript">
 	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
@@ -39,10 +45,19 @@
 	  			<li>
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
 	  			</li>
+	  			
+	  			<sec:authorize ifAnyGranted="ROLE_ADMIN">
+	  			<li>
+	  				<a href="${pageContext.request.contextPath}/admin/index">Admin panel</a>
+	  			</li>
+	  			</sec:authorize>
 	  		</ul>
 	  		<ul class="nav navbar-nav" style="float: right;">
 	  			<li>
-	  				<a href='<c:url value="/j_spring_security_logout" />' style> Logout</a>
+	  				<label style="padding-top: 15px;"><sec:authentication property="principal.username" /></label>
+	  			</li>
+	  			<li>
+	  				<a href='<c:url value="/j_spring_security_logout" />'> Logout</a>
 	  			</li>
 	  		</ul>
 	  		

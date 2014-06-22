@@ -1,11 +1,12 @@
 package com.thesischecker.controller;
 
-import com.thesischecker.domain.*;
+import com.thesischecker.domain.Resource;
 import com.thesischecker.dto.ResourceEntity;
 import com.thesischecker.dto.UserProfileEntity;
 import com.thesischecker.models.ResourcesModel;
 import com.thesischecker.services.interfaces.IResourcesService;
 import com.thesischecker.services.interfaces.IUsersService;
+import com.thesischecker.utils.Constants;
 import com.thesischecker.utils.ResponseUtil;
 import com.thesischecker.utils.ValidationUtil;
 import com.thesischecker.validators.ResourcesModelValidator;
@@ -61,6 +62,15 @@ public class ResourcesController {
     }
 
     /**
+     * Render add view
+     * @return view name
+     */
+    @RequestMapping(value = "/add", method =  RequestMethod.GET)
+    public ModelAndView add() {
+        return new ModelAndView("/resources/add");
+    }
+
+    /**
      * Search action
      * @return
      */
@@ -74,18 +84,21 @@ public class ResourcesController {
         validator.validate(resourcesModel, result);
         if (result.hasErrors()) {
             List<ObjectError> errors = result.getAllErrors();
-            return new ResponseUtil("Form validation errors!", errors);
+            return new ResponseUtil(Constants.FORM_VALIDATION_ERRORS, errors);
         } else {
             List<ResourceEntity> resourceEntities = this.resourcesService.find(
                     resourcesModel.getUserId(),
                     ValidationUtil.parseDate(resourcesModel.getDateFrom()),
                     ValidationUtil.parseDate(resourcesModel.getDateTo()));
-            List resources = new ArrayList<Resource>();
-            for (ResourceEntity resourceEntity : resourceEntities) {
-                resources.add(new Resource(resourceEntity));
+            if (resourceEntities.size() != 0) {
+                List resources = new ArrayList<Resource>();
+                for (ResourceEntity resourceEntity : resourceEntities) {
+                    resources.add(new Resource(resourceEntity));
+                }
+                return new ResponseUtil(resources);
+            } else {
+                return new ResponseUtil(Constants.NO_RECORDS_FOUND);
             }
-            return new ResponseUtil(resources);
-
         }
     }
 }
