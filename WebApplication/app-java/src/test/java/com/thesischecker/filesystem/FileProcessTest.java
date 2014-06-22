@@ -3,7 +3,6 @@ package com.thesischecker.filesystem;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URL;
 
 import junit.framework.TestCase;
 
@@ -68,8 +67,8 @@ public class FileProcessTest extends TestCase {
 
     @Test
     public void testSaveFileOnDisk() throws Exception {
-        URL resourceUrl = getClass().getResource("/test.md");
-        File uploadFile = new File(resourceUrl.getPath());
+        String resourceUrl = currentDir + "/src/test/resources/test.md";
+        File uploadFile = new File(resourceUrl);
         FileProcess fileP = new FileProcess(currentDir
                 + "/src/main/resources/files");
         fileP.saveFileOnDisk(uploadFile);
