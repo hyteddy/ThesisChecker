@@ -1,5 +1,6 @@
 package com.thesischecker.controller;
 
+import com.thesischecker.domain.File;
 import com.thesischecker.domain.Resource;
 import com.thesischecker.dto.ResourceEntity;
 import com.thesischecker.dto.UserProfileEntity;
@@ -17,9 +18,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -99,6 +104,29 @@ public class ResourcesController {
             } else {
                 return new ResponseUtil(Constants.NO_RECORDS_FOUND);
             }
+        }
+    }
+
+    /**
+     * Upload file to file system and database
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseUtil upload(MultipartHttpServletRequest request,
+                               HttpServletResponse response) {
+        Iterator<String> filesIterator = request.getFileNames();
+        if (filesIterator.hasNext()) {
+            String fileContext = filesIterator.next();
+            MultipartFile file = request.getFile(fileContext);
+            String fileName = file.getOriginalFilename();
+            String fileType = file.getContentType();
+            File uploadedFile = new File(fileName, fileType);
+            return new ResponseUtil(uploadedFile, "Upload file success");
+        } else {
+            return new ResponseUtil("Unexpected error", new ArrayList());
         }
     }
 }
