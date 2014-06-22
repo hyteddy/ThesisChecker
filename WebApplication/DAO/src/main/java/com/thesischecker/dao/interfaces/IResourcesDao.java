@@ -26,6 +26,22 @@ public interface IResourcesDao {
     Long insert(ResourceEntity resourceEntity);
 
     /**
+     * Find Resources by id
+     *
+     * @param resourceID
+     * @return
+     */
+    public List<ResourceEntity> findById(Long resourceID);
+
+    /**
+     * Find Resources other than given id
+     *
+     * @param resourceID
+     * @return
+     */
+    public List<ResourceEntity> findOtherById(Long resourceID);
+
+    /**
      * This method persist instance of {@link ResourceEntity}
      * 
      * @param resourceEntity
