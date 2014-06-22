@@ -21,6 +21,11 @@ public interface IResourcesService {
      */
     List<ResourceEntity> find(Long userId, Date dateFrom, Date dateTo);
 
+    /**
+     * Find resources by Id
+     * @param id
+     * @return
+     */
     public List<ResourceEntity> get(Long id);
 
     /**
