@@ -13,7 +13,7 @@
 		<module>services</module>
 		<module>app-java</module>
 		<module>app-web</module>
-	</modules>
+    </modules>
 
 	<properties>
 		<org.springframework.version>3.2.8.RELEASE</org.springframework.version>
@@ -181,27 +181,25 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.4.2</version>
         </dependency>
-        
-        <!-- Spring Security dependecies -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>3.2.4.RELEASE</version>
-		</dependency>
- 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>3.2.4.RELEASE</version>
-		</dependency>
- 
-		<!-- Spring Security JSP Taglib -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>3.2.4.RELEASE</version>
-		</dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-all</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
 	</dependencies>
+
 
     <build>
 

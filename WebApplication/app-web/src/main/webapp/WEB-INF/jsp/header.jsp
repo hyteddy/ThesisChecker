@@ -1,7 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -45,19 +43,18 @@
 	  			<li>
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
 	  			</li>
-	  			
-	  			<sec:authorize ifAnyGranted="ROLE_ADMIN">
+	  			<shiro:hasRole name="ROLE_ADMIN">
 	  			<li>
-	  				<a href="${pageContext.request.contextPath}/admin/index">Admin panel</a>
+	  				<a href="${pageContext.request.contextPath}/admin/">Admin panel</a>
 	  			</li>
-	  			</sec:authorize>
+	  			</shiro:hasRole>
 	  		</ul>
 	  		<ul class="nav navbar-nav" style="float: right;">
 	  			<li>
-	  				<label style="padding-top: 15px;"><sec:authentication property="principal.username" /></label>
+	  				<label style="padding-top: 15px;"><shiro:principal/></label>
 	  			</li>
 	  			<li>
-	  				<a href='<c:url value="/j_spring_security_logout" />'> Logout</a>
+	  				<a href="${pageContext.request.contextPath}/logout"> Logout</a>
 	  			</li>
 	  		</ul>
 	  		
