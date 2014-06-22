@@ -58,10 +58,10 @@ public class Resource implements Serializable {
     public Resource(ResourceEntity resourceEntity) {
         this.name = resourceEntity.getName();
         this.fileType = resourceEntity.getFileType();
-        this.uploadDate = resourceEntity.getCreatedAt();
-        if (resourceEntity.getUserEntity() != null) {
+        this.uploadDate = resourceEntity.getUpdatedAt();
+        /*if (resourceEntity.getUserEntity() != null) {
             this.user = resourceEntity.getUserEntity().getEmail();
-        }
+        }*/
     }
 
     public String getName() {

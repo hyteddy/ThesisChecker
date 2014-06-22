@@ -7,7 +7,6 @@
 	<persistence-unit name="PersistenceUnitResources"
 		transaction-type="JTA">
 		<class>com.thesischecker.dto.ResourceEntity</class>
-        <class>com.thesischecker.dto.UserEntity</class>
 		<properties>
 			<property name="hibernate.transaction.manager_lookup_class"
 				value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup" />

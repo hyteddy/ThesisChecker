@@ -42,11 +42,7 @@ public final class ValidationUtil {
         try {
             Date from = sdf.parse(dateFrom);
             Date to = sdf.parse(dateTo);
-            if (from.equals(to)) {
-                return true;
-            } else {
-                return from.before(to);
-            }
+            return from.before(to);
         } catch (ParseException e) {
             return false;
         }

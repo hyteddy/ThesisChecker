@@ -31,12 +31,12 @@ public class AnalysisHTMLConverter
         return right;
     }
 
-    private static final String EQUAL_TAG_START = "<span class=\"equal\">";
-    private static final String EQUAL_TAG_END = "</span><br>";
-    private static final String INSERT_TAG_START = "<span class=\"insert\">";
-    private static final String INSERT_TAG_END = "</span><br>";
-    private static final String DELETE_TAG_START = "<span class=\"delete\">";
-    private static final String DELETE_TAG_END = "</span><br>";
+    private static final String EQUAL_TAG_START = "<div class=\"equal\">";
+    private static final String EQUAL_TAG_END = "</div><br>";
+    private static final String INSERT_TAG_START = "<div class=\"insert\">";
+    private static final String INSERT_TAG_END = "</div><br>";
+    private static final String DELETE_TAG_START = "<div class=\"delete\">";
+    private static final String DELETE_TAG_END = "</div><br>";
     private static final String EMPTY_LINE = "<br>";
     private static final String MORE_LINES = " more lines...";
     //TODO test line splitting on different platforms
@@ -52,25 +52,14 @@ public class AnalysisHTMLConverter
         for (Diff diff : diffs)
         {
             String[] lines = splitLines(diff.getText(), LINE_DELIMITER);
-            for(int i=0;i<lines.length;i++)
-                if(lines[i].trim().length()==0)
-                    lines[i]+=".";
             switch (diff.getOperation())
             {
                 case EQUAL:
-                    // fill difference with non empty lines for stupid css formatting reasons
+                    // fill difference with empty lines
                     for (; leftLines < rightLines; leftLines++)
-                    {
-                        left.append(DELETE_TAG_START);
-                        left.append(".");
-                        left.append(DELETE_TAG_END);
-                    }
+                        left.append(EMPTY_LINE);
                     for (; rightLines < leftLines; rightLines++)
-                    {
-                        right.append(INSERT_TAG_START);
-                        right.append(".");
-                        right.append(INSERT_TAG_END);
-                    }
+                        right.append(EMPTY_LINE);
                     for (String line : lines)
                     {
                         left.append(EQUAL_TAG_START);

@@ -1,6 +1,7 @@
 package com.thesischecker.dto;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -18,7 +19,8 @@ public class ResourceEntity {
     private Date createdAt;
     private Date updatedAt;
     private Date deletedAt;
-    private UserEntity userEntity;
+    //private UserEntity userEntity;
+//    private Collection<AnalysisEntity> Analyses;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -86,7 +88,7 @@ public class ResourceEntity {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -96,7 +98,7 @@ public class ResourceEntity {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -106,17 +108,27 @@ public class ResourceEntity {
         return deletedAt;
     }
 
-    public void setDeletedAt(Date deletedAt) {
+    public void setDeletedAt(Timestamp deletedAt) {
         this.deletedAt = deletedAt;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     public UserEntity getUserEntity() {
         return userEntity;
     }
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
+    }*/
+
+    /*
+    @ManyToMany(mappedBy = "Resources")
+    public Collection<AnalysisEntity> getAnalyses() {
+        return Analyses;
     }
+
+    public void setAnalyses(Collection<AnalysisEntity> analyses) {
+        Analyses = analyses;
+    }*/
 }
