@@ -137,6 +137,7 @@ public class FileProcess implements IFileProcess {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -164,8 +165,10 @@ public class FileProcess implements IFileProcess {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         out.flush();
         out.close();
+
         return newF.getAbsolutePath();
     }
 }
