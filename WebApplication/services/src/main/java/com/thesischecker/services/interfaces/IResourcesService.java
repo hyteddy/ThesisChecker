@@ -21,6 +21,8 @@ public interface IResourcesService {
      */
     List<ResourceEntity> find(Long userId, Date dateFrom, Date dateTo);
 
+    public List<ResourceEntity> get(Long id);
+
     /**
      * Save resource on db and file system
      * @param name

@@ -119,6 +119,32 @@ public class ResourcesController {
         }
     }
 
+    @RequestMapping(value = "/getById", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseUtil get(@RequestBody IdModel idModel,
+                            BindingResult result)
+    {
+        IdModelValidator validator = new IdModelValidator();
+        validator.validate(idModel, result);
+        if (result.hasErrors()) {
+            List<ObjectError> errors = result.getAllErrors();
+            return new ResponseUtil(Constants.FORM_VALIDATION_ERRORS, errors);
+        } else {
+            List<ResourceEntity> resourceEntities = this.resourcesService.get(idModel.getId());
+            if (resourceEntities.size() != 0) {
+                List resources = new ArrayList<Resource>();
+                for (ResourceEntity resourceEntity : resourceEntities) {
+                    resources.add(new Resource(resourceEntity));
+                }
+                return new ResponseUtil(resources);
+            } else {
+                return new ResponseUtil(Constants.NO_RECORDS_FOUND);
+            }
+        }
+    }
+
     /**
      * Upload file to file system and database
      * @param request
