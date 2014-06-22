@@ -31,6 +31,11 @@ public class ResponseUtil {
     private List<Object> list;
 
     /**
+     * Response result object
+     */
+    private Object object;
+
+    /**
      * Errors list
      */
     private List<ObjectError> errors;
@@ -57,6 +62,26 @@ public class ResponseUtil {
      * @param successMessage
      */
     public ResponseUtil(String successMessage) {
+        this.status = STATUS_SUCCESS;
+        this.successMessage = successMessage;
+    }
+
+    /**
+     * Constructor to create success response with object
+     * @param object
+     */
+    public ResponseUtil(Object object) {
+        this.status = STATUS_SUCCESS;
+        this.object = object;
+    }
+
+    /**
+     * Constructor to create success response with object and message
+     * @param object
+     * @param successMessage
+     */
+    public ResponseUtil(Object object, String successMessage) {
+        this(object);
         this.status = STATUS_SUCCESS;
         this.successMessage = successMessage;
     }
@@ -105,6 +130,14 @@ public class ResponseUtil {
 
     public void setList(List<Object> list) {
         this.list = list;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 
     public List<ObjectError> getErrors() {
