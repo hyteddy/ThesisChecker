@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by awilczyn on 17.05.2014.
  */
 @Entity
-@Table(name = "user", schema = "", catalog = "thesis")
+@Table(name = "user", schema = "tomek199_thesis")
 public class UserEntity {
     private int id;
     private String email;

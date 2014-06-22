@@ -1,5 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -34,6 +34,12 @@
 	  			</li>
 	  			<li>
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
+	  			</li>
+	  			<li>
+	  			    <a href="${pageContext.request.contextPath}/logout">Logout</a>
+	  			</li>
+	  			<li>
+	  			    <shiro:principal/>
 	  			</li>
 	  		</ul>
 	  	</div>
