@@ -32,4 +32,16 @@ public abstract class AbstractDao {
     protected Session getSession() {
         return this.sessionFactory.openSession();
     }
+
+    /**
+     * Get prefix to query
+     * @return String (Where | And)
+     */
+    protected String getPrefix(boolean isFirstParam) {
+        if (isFirstParam == true) {
+            return "Where";
+        } else {
+            return "And";
+        }
+    }
 }

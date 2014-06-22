@@ -5,6 +5,7 @@ body{
 
 img{
 	background-color:#f5f5f5;
+	width:95px;
 }
 /* logo */
 #logoz{
@@ -18,9 +19,21 @@ img{
 }
 
 /* name */
-#identification{
+#identification,#logout,#zn{
 	float:right;
 	margin-top: 40px;
+}
+
+
+#zn{
+	margin-left:5px;
+	margin-right:5px;
+}
+
+
+#site2{
+	padding-top:10px;
+	padding-left:19px;
 }
 
 /* content */
@@ -31,6 +44,10 @@ img{
 
 .input-wlasne{
 	width:100%;
+}
+
+#list_doc_w{
+	margin-top:10px;
 }
 
 #list_doc_w select{
@@ -52,6 +69,7 @@ img{
 
 #sender form{
 	width: 400px;
+	height: 90px;
 	padding: 5px;
 	background-color: #f5f5f5;
 	border: 1px solid gainsboro;
@@ -59,6 +77,14 @@ img{
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 20px;
+}
+
+#chooser{
+	background-color: gainsboro;
+}
+
+#bt-send{
+	margin:9px 155px;
 }
 
 #delete{

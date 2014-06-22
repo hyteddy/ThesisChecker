@@ -4,49 +4,49 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.dto.ResourceEntity" table="resource" schema="" catalog="thesis">
-        <id name="id">
-            <column name="id" sql-type="int" not-null="true"/>
+    <class userId="com.thesischecker.dto.ResourceEntity" table="resource" schema="" catalog="thesis">
+        <id userId="id">
+            <column userId="id" sql-type="int" not-null="true"/>
         </id>
-        <property name="name">
-            <column name="name" sql-type="varchar"/>
+        <property userId="userId">
+            <column userId="userId" sql-type="varchar"/>
         </property>
-        <property name="description">
-            <column name="description" sql-type="longtext" length="2147483647"/>
+        <property userId="description">
+            <column userId="description" sql-type="longtext" length="2147483647"/>
         </property>
-        <property name="fileType">
-            <column name="file_type" sql-type="varchar"/>
+        <property userId="fileType">
+            <column userId="file_type" sql-type="varchar"/>
         </property>
-        <property name="filePath">
-            <column name="file_path" sql-type="varchar"/>
+        <property userId="filePath">
+            <column userId="file_path" sql-type="varchar"/>
         </property>
-        <property name="plainText">
-            <column name="plain_text" sql-type="longtext" length="2147483647"/>
+        <property userId="plainText">
+            <column userId="plain_text" sql-type="longtext" length="2147483647"/>
         </property>
-        <property name="userId">
-            <column name="user_id" sql-type="int"/>
+        <property userId="userId">
+            <column userId="user_id" sql-type="int"/>
         </property>
-        <property name="createdAt">
-            <column name="created_at" sql-type="datetime" not-null="true"/>
+        <property userId="createdAt">
+            <column userId="created_at" sql-type="datetime" not-null="true"/>
         </property>
-        <property name="updatedAt">
-            <column name="updated_at" sql-type="datetime" not-null="true"/>
+        <property userId="updatedAt">
+            <column userId="updated_at" sql-type="datetime" not-null="true"/>
         </property>
-        <property name="deletedAt">
-            <column name="deleted_at" sql-type="datetime"/>
+        <property userId="deletedAt">
+            <column userId="deleted_at" sql-type="datetime"/>
         </property>
-        <set name="User" inverse="true">
+        <set userId="User" inverse="true">
             <key>
-                <column name="id" not-null="true"/>
+                <column userId="id" not-null="true"/>
             </key>
             <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
         </set>
-        <set name="Analyses" inverse="true" table="analysis_has_resource" schema="" catalog="thesis">
+        <set userId="Analyses" inverse="true" table="analysis_has_resource" schema="" catalog="thesis">
             <key>
-                <column name="resource_id" not-null="true"/>
+                <column userId="resource_id" not-null="true"/>
             </key>
             <many-to-many not-found="ignore" class="com.thesischecker.dto.AnalysisEntity">
-                <column name="analysis_id" not-null="true"/>
+                <column userId="analysis_id" not-null="true"/>
             </many-to-many>
         </set>
     </class>

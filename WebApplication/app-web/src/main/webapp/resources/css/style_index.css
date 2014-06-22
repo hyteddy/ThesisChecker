@@ -19,5 +19,12 @@ html,body{
 	margin-right: auto;
 	width: 215px;
 }
-/* TRESC STRONY */
 
+.errorblock {  
+ color: #ff0000;  
+ background-color: #ffEEEE;  
+ border: 3px solid #ff0000;  
+ padding: 8px;  
+ margin: 16px;  
+
+/* TRESC STRONY */

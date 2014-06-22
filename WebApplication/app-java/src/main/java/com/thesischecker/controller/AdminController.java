@@ -21,7 +21,7 @@ public class AdminController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap model){
         model.addAttribute("NewAccountModel",new NewAccountModel());
-        return "/admin/admin";
+        return "/admin/index";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
@@ -31,9 +31,9 @@ public class AdminController {
 
         UserDao user = new UserDao();
         user.addUser(username,password);
-        ModelAndView m= new ModelAndView("/admin/admin");
+        ModelAndView m= new ModelAndView("/admin/index");
         m.addObject("creationString", "Account for user "+username+" created");
 
         return m;
     }
-    }
+}

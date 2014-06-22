@@ -47,11 +47,9 @@ public class IndexController {
 
         ModelAndView ret = new ModelAndView("/index");
         org.apache.shiro.subject.Subject currentUser = SecurityUtils.getSubject();
-        //collect user principals and credentials in a gui specific manner
-        //such as username/password html form, X509 certificate, OpenID, etc.
-        //We'll use the username/password example here since it is the most common.
+
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-        //this is all you have to do to support 'remember me' (no config - built in!):
+
         token.setRememberMe(true);
 
         try {

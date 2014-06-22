@@ -11,11 +11,19 @@
 	<meta name="keywords"  content="" />
 	<meta name="Resource-type" content="Document" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery.fileupload.css" />
+
     <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.blockUI.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.ui.widget.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.iframe-transport.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.fileupload.js"></script>
 </head>
 <script type="text/javascript">
 	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
@@ -35,13 +43,21 @@
 	  			<li>
 	  				<a href="${pageContext.request.contextPath}/resources/index">Resources</a>
 	  			</li>
+	  			<shiro:hasRole name="ROLE_ADMIN">
 	  			<li>
-	  			    <a href="${pageContext.request.contextPath}/logout">Logout</a>
+	  				<a href="${pageContext.request.contextPath}/admin/">Admin panel</a>
+	  			</li>
+	  			</shiro:hasRole>
+	  		</ul>
+	  		<ul class="nav navbar-nav" style="float: right;">
+	  			<li>
+	  				<label style="padding-top: 15px;"><shiro:principal/></label>
 	  			</li>
 	  			<li>
-	  			    <shiro:principal/>
+	  				<a href="${pageContext.request.contextPath}/logout"> Logout</a>
 	  			</li>
 	  		</ul>
+	  		
 	  	</div>
 	  </div>
 	</nav>

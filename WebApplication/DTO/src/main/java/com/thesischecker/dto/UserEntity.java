@@ -1,8 +1,9 @@
 package com.thesischecker.dto;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by awilczyn on 17.05.2014.
@@ -17,13 +18,10 @@ public class UserEntity {
     private String role;
     private String token;
     private Byte active;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
-    private Timestamp deletedAt;
-    private Collection<ResourceEntity> resourceEntities;
- /*   private AnalysisEntity Analyses;
-    private UserProfileEntity Profile;
-    private UserUpdateEntity Updates;*/
+    private Date createdAt;
+    private Date updatedAt;
+    private Date deletedAt;
+    private Set<ResourceEntity> resourceEntities = new HashSet<ResourceEntity>();
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -97,32 +95,41 @@ public class UserEntity {
 
     @Basic
     @Column(name = "created_at", nullable = false, insertable = true, updatable = true)
-    public Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
     @Basic
     @Column(name = "updated_at", nullable = false, insertable = true, updatable = true)
-    public Timestamp getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Timestamp updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     @Basic
     @Column(name = "deleted_at", nullable = true, insertable = true, updatable = true)
-    public Timestamp getDeletedAt() {
+    public Date getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(Timestamp deletedAt) {
+    public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity")
+    public Set<ResourceEntity> getResourceEntities() {
+        return resourceEntities;
+    }
+
+    public void setResourceEntities(Set<ResourceEntity> resourceEntities) {
+        this.resourceEntities = resourceEntities;
     }
 
     @Override
@@ -160,43 +167,4 @@ public class UserEntity {
         result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
         return result;
     }
-
-    @OneToMany(mappedBy = "userEntity")
-    public Collection<ResourceEntity> getResourceEntities() {
-        return resourceEntities;
-    }
-
-    public void setResourceEntities(Collection<ResourceEntity> resourceEntities) {
-        this.resourceEntities = resourceEntities;
-    }
-
-    /*/*@ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
-    public AnalysisEntity getAnalyses() {
-        return Analyses;
-    }
-
-    public void setAnalyses(AnalysisEntity analyses) {
-        Analyses = analyses;
-    }*/
-
-    /*@OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
-    public UserProfileEntity getProfile() {
-        return Profile;
-    }
-
-    public void setProfile(UserProfileEntity profile) {
-        Profile = profile;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "id", referencedColumnName = "user_id", nullable = false)
-    public UserUpdateEntity getUpdates() {
-        return Updates;
-    }
-
-    public void setUpdates(UserUpdateEntity updates) {
-        Updates = updates;
-    }*/
 }

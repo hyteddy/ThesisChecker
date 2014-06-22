@@ -4,22 +4,22 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.thesischecker.dto.UserUpdateEntity" table="user_update" schema="" catalog="thesis">
-        <id name="id">
-            <column name="id" sql-type="int" not-null="true"/>
+    <class userId="com.thesischecker.dto.UserUpdateEntity" table="user_update" schema="" catalog="thesis">
+        <id userId="id">
+            <column userId="id" sql-type="int" not-null="true"/>
         </id>
-        <property name="userId">
-            <column name="user_id" sql-type="int"/>
+        <property userId="userId">
+            <column userId="user_id" sql-type="int"/>
         </property>
-        <property name="token">
-            <column name="token" sql-type="varchar"/>
+        <property userId="token">
+            <column userId="token" sql-type="varchar"/>
         </property>
-        <property name="type">
-            <column name="type" sql-type="varchar"/>
+        <property userId="type">
+            <column userId="type" sql-type="varchar"/>
         </property>
-        <set name="User" inverse="true">
+        <set userId="User" inverse="true">
             <key>
-                <column name="id" not-null="true"/>
+                <column userId="id" not-null="true"/>
             </key>
             <one-to-many not-found="ignore" class="com.thesischecker.dto.UserEntity"/>
         </set>
