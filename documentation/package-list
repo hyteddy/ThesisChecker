@@ -1,0 +1,17 @@
+com.thesischecker.auth
+com.thesischecker.comparator
+com.thesischecker.controller
+com.thesischecker.dao.impl
+com.thesischecker.dao.interfaces
+com.thesischecker.domain
+com.thesischecker.dto
+com.thesischecker.extractor
+com.thesischecker.filesystem
+com.thesischecker.interfaces
+com.thesischecker.models
+com.thesischecker.services.impl
+com.thesischecker.services.interfaces
+com.thesischecker.test.comparator
+com.thesischecker.test.extractor
+com.thesischecker.utils
+com.thesischecker.validators
