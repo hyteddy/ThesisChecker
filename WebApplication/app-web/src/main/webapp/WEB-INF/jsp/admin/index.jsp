@@ -1,5 +1,5 @@
 <%@ include file="../header.jsp" %>
-		<div class="tabbable"> <!-- Only required for left/right tabs -->
+				<div class="tabbable"> <!-- Only required for left/right tabs -->
 		  <ul class="nav nav-tabs">
 			<li class="active"><a href="#tab1" data-toggle="tab">Promoter</a></li>
 			<li><a href="#tab2" data-toggle="tab">Logs</a></li>
@@ -37,15 +37,16 @@
 				</form>
 				</div>
 				<div id="bt_2">
-					<div class="input-group" id="search">
-					  <input type="text" class="form-control" placeholder="SEARCH">
-					  <span class="input-group-btn">
-						<button type="button" class="btn btn-default btn-lg">
-						  <span class="add-on"><i class="icon-search"></i></span>
-						</button>
-					  </span>
-					</div>					
-					<div class="btn btn-inverse" id="rightB">DELETE</div>
+					<div class="col-md-5">
+						<div class="input-group">
+						  <input type="text" class="form-control" placeholder="SEARCH">
+						  <span class="input-group-btn">
+							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+						  </span>
+						</div><!-- /input-group -->
+					</div><!-- /.col-lg-6 -->
+			
+					<div class="btn btn-danger" id="rightB">DELETE</div>
 					<div class="btn btn-success" id="rightB">ADD</div>
 				</div>
 				
@@ -105,7 +106,7 @@
 				</form>
 				</div>
 				<div id="bt_1">
-					<div class="btn btn-inverse" id="rightB">DELETE</div>
+					<div class="btn btn-danger" id="rightB">DELETE</div>
 				</div>
 			</div>
 		<!-- Prace -->
@@ -138,71 +139,69 @@
 				</form>
 				</div>
 				<div id="bt_1">
-				<!-- <div class="row">
-				  <div class="col-lg-6">
-					<div class="input-group">
-					  <div class="input-group-btn">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-						<ul class="dropdown-menu">
-						  <li><a href="#"></a></li>
-						  <li><a href="#">Another action</a></li>
-						  <li><a href="#">Something else here</a></li>
-						</ul>
-					  </div>
-					  <input type="text" class="form-control">
-					</div>
-				  </div>
-				</div> -->
-					<div class="input-group" id="search">
-					  <input type="text" class="form-control" placeholder="SEARCH">
-					  <span class="input-group-btn">
-						<button type="button" class="btn btn-default btn-lg">
-						  <span class="add-on"><i class="icon-search"></i></span>
-						</button>
-					  </span>
-					</div>
-				<div class="btn btn-inverse" id="rightB">DELETE</div>
+					<div class="col-md-5">
+						<div class="input-group">
+						  <input type="text" class="form-control" placeholder="SEARCH">
+						  <span class="input-group-btn">
+							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+						  </span>
+						</div><!-- /input-group -->
+					</div><!-- /.col-lg-6 -->
+				<div class="btn btn-danger" id="rightB">DELETE</div>
 				</div>
 			</div>
 		<!-- Dodawanie -->
 			<div class="tab-pane" id="tab5">
 			  <form class="form-horizontal">
-				  <div class="control-group">
-					<label class="control-label" for="inputName">Name</label>
-					<div class="controls">
-					  <input type="text" id="inputName" placeholder="Name">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="inputSurname">Surname</label>
-					<div class="controls">
-					  <input type="text" id="inputSurname" placeholder="Surname">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="inputTitle">Degree</label>
-					<div class="controls">
-					  <input type="text" id="inputTitle" placeholder="Degree e.g master">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="inputInst">Faculty</label>
-					<div class="controls">
-					  <input type="text" id="inputInst" placeholder="Faculty">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label" for="inputEmail">Email</label>
-					<div class="controls">
-					  <input type="text" id="inputEmail" placeholder="Email">
+				  
+				  <div class="form-group">
+					<label for="inputName" class="col-sm-3 control-label">Name</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+						  <input type="text" class="form-control" id="inputName" placeholder="Name" required="">
+						</div>
 					</div>
 				  </div>
 				  
-				  <div class="control-group">
-					<div class="controls">
-					  <button type="submit" class="btn">ADD</button>
+				  <div class="form-group">
+					<label for="inputSurname" class="col-sm-3 control-label">Surname</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+						  <input type="text" class="form-control" id="inputSurname" placeholder="Surname" required="">
+						</div>
 					</div>
 				  </div>
+				  
+				  <div class="form-group">
+					<label for="inputTitle" class="col-sm-3 control-label">Degree</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+						  <input type="text" class="form-control" id="inputTitle" placeholder="Degree e.g master" required="">
+						</div>
+					</div>
+				  </div>
+				  
+				  <div class="form-group">
+					<label for="inputInst" class="col-sm-3 control-label">Faculty</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+						  <input type="text" class="form-control" id="inputInst" placeholder="Faculty">
+						</div>
+					</div>
+				  </div>
+				  
+				  
+				  <div class="form-group">
+					<label for="inputEmail" class="col-sm-3 control-label">Email</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+						  <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+						</div>
+					</div>
+				  </div>
+				  	<div class="col-sm-offset-3 col-sm-8">
+					  <button type="submit" class="btn btn-info">ADD</button>
+					</div>
 				</form>
 			</div>
 			
