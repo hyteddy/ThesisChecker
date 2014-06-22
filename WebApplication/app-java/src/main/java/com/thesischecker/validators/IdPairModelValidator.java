@@ -1,6 +1,5 @@
 package com.thesischecker.validators;
 
-import com.thesischecker.models.IdModel;
 import com.thesischecker.models.IdPairModel;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -16,6 +15,6 @@ public class IdPairModelValidator implements Validator
 
     @Override
     public void validate(Object o, Errors errors) {
-        IdModel model = (IdModel) o;
+        IdPairModel model = (IdPairModel) o;
     }
 }
