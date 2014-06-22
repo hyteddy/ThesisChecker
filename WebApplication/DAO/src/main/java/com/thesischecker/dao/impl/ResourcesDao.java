@@ -53,6 +53,12 @@ public class ResourcesDao extends AbstractDao implements IResourcesDao {
     }
 
     @Override
+    public Long insert(ResourceEntity resourceEntity) {
+        Long id = (Long) getSession().save(resourceEntity);
+        return id;
+    }
+
+    @Override
     public void persistResourceEntity(ResourceEntity resourceEntity) {
         entityManager.persist(resourceEntity);
     }

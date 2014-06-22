@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user", schema = "tomek199_thesis")
 public class UserEntity {
-    private int id;
+    private Long id;
     private String email;
     private String salt;
     private String password;
@@ -23,13 +23,21 @@ public class UserEntity {
     private Date deletedAt;
     private Set<ResourceEntity> resourceEntities = new HashSet<ResourceEntity>();
 
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id) {
+        this.id = id;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -151,20 +159,5 @@ public class UserEntity {
         if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (salt != null ? salt.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (token != null ? token.hashCode() : 0);
-        result = 31 * result + (active != null ? active.hashCode() : 0);
-        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
-        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
-        result = 31 * result + (deletedAt != null ? deletedAt.hashCode() : 0);
-        return result;
     }
 }

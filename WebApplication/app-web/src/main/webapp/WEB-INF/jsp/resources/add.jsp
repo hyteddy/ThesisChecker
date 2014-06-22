@@ -1,12 +1,14 @@
 <%@ include file="../header.jsp" %>
 <script type="text/javascript">
     $(function() {
-        removeInfo();
+        $("#infoMessage").hide();
+        $("#errorMessage").hide();
         $("#filesList").hide();
         $("#fileupload").fileupload({
             dataType: 'json',
             add: function (e, data) {
                 removeInfo();
+                removeErrors();
                 $('#progress .progress-bar').css('width', '0%');
                 data.context = $('<button class="btn btn-primary"/>').text('Upload')
                     .appendTo(".panel-body#uploadPanel #buttonArea")
@@ -26,6 +28,8 @@
                     tableContent += "<td>" + data.result.object.type + "<td></tr>";
                     $("#filesList tbody").append(tableContent);
                     $("#filesList").show();
+                } else {
+                    showErrors(data.result);
                 }
             },
             progressall: function (e, data) {
@@ -40,6 +44,7 @@
         <div class="panel-heading"><h2 class="panel-title">Upload</h2></div>
         <div class="panel-body" id="uploadPanel">        
             <div id="infoMessage" class="alert alert-success"></div>
+            <div id="errorMessage" class="alert alert-danger"></div>
             <span class="btn btn-success fileinput-button">
                 <span>Add file</span>
                 <input id="fileupload" type="file" data-url="upload" accept="application/msword,application/pdf"> 

@@ -23,6 +23,12 @@
 	</properties>
 
 	<dependencies>
+
+        <dependency>
+            <groupId>thesischecker.comparator</groupId>
+            <artifactId>comparator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 	
 		<!-- Spring dependencies -->
 		<dependency>

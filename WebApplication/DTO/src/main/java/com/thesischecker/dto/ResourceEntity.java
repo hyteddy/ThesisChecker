@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "resource", schema = "tomek199_thesis")
 public class ResourceEntity {
-    private int id;
+    private Long id;
     private String name;
     private String description;
     private String fileType;
@@ -21,12 +21,13 @@ public class ResourceEntity {
     private UserEntity userEntity;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

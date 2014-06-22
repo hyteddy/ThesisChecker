@@ -12,7 +12,27 @@ import java.util.List;
  */
 public interface IResourcesService {
 
+    /**
+     * Find resources by params
+     * @param userId
+     * @param dateFrom
+     * @param dateTo
+     * @return
+     */
     List<ResourceEntity> find(Long userId, Date dateFrom, Date dateTo);
+
+    /**
+     * Save resource on db and file system
+     * @param name
+     * @param fileType
+     * @param filePath
+     * @param plainText
+     * @param createdAt
+     * @param userId
+     * @return
+     */
+    Long save(String name, String fileType, String filePath,
+              String plainText, Date createdAt, Long userId);
 
     /**
      * Method for persistence {@link ResourceEntity} class.
