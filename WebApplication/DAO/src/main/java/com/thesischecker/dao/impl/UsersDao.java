@@ -1,6 +1,7 @@
 package com.thesischecker.dao.impl;
 
 import com.thesischecker.dao.interfaces.IUsersDao;
+import com.thesischecker.dto.UserEntity;
 import com.thesischecker.dto.UserProfileEntity;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +28,13 @@ public class UsersDao extends AbstractDao implements IUsersDao {
             result.add(userProfileEntity);
         }
         return result;
+    }
+
+    @Override
+    public UserEntity getUserByEmail(String email) {
+        String query = "From UserEntity As usr Where usr.email = :email";
+        UserEntity user = (UserEntity) getSession().createQuery(query)
+                                    .setString("email", email).uniqueResult();
+        return user;
     }
 }

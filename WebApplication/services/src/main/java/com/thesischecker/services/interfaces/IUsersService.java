@@ -14,4 +14,11 @@ public interface IUsersService {
      * @return
      */
     List<UserProfileEntity> getFullNames();
+
+    /**
+     * Get user ID by email
+     * @param email
+     * @return user ID
+     */
+    Long getUserId(String email);
 }

@@ -16,6 +16,8 @@ import com.thesischecker.utils.Constants;
 import com.thesischecker.utils.ResponseUtil;
 import com.thesischecker.utils.ValidationUtil;
 import com.thesischecker.validators.ResourcesModelValidator;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -128,7 +130,7 @@ public class ResourcesController {
     public ResponseUtil upload(MultipartHttpServletRequest request,
                                HttpServletResponse response) {
         Iterator<String> filesIterator = request.getFileNames();
-        String path = request.getContextPath() + "/resources/";
+        String path = System.getProperty("user.dir") + "/resources";
         if (filesIterator.hasNext()) {
             String fileContext = filesIterator.next();
             MultipartFile file = request.getFile(fileContext);
@@ -139,9 +141,11 @@ public class ResourcesController {
             ITextExtractor textExtractor;
             try {
                 filePath = saveFile(file, plainText, path);
-                // TODO: add user id from session
+                Subject currentUser = SecurityUtils.getSubject();
+                String userEmail = (String) currentUser.getPrincipal();
+                Long userId = this.usersService.getUserId(userEmail);
                 Long resourceId = this.resourcesService.save(fileName, fileType,
-                        filePath, plainText, new Date(), 1L);
+                        filePath, plainText, new Date(), userId);
                 File uploadedFile = new File(resourceId, fileName, fileType);
                 return new ResponseUtil(uploadedFile, "Upload file success");
             } catch (TextExtractorException e) {
