@@ -1,20 +1,21 @@
 package com.thesischecker.test.extractor;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
-import java.io.InputStream;
-
-import org.junit.Test;
-
 import com.thesischecker.extractor.IDocumentInformation;
 import com.thesischecker.extractor.ITextExtractor;
 import com.thesischecker.extractor.PDFExtractor;
 import com.thesischecker.extractor.TextExtractorException;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.InputStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class PDFExtractorTest {
-    
+
+    private static final String lf=System.getProperty("line.separator");
+
 	@Test
 	public void readFileFromInputStream() throws TextExtractorException {
 		
@@ -22,7 +23,7 @@ public class PDFExtractorTest {
 		assertNotNull(in);
 		
 		ITextExtractor extr = new PDFExtractor(in);
-		assertEquals("Simple pdf \r\nSadek \r\ntadek \r\n", extr.extract());
+		assertEquals("Simple pdf "+lf+"Sadek "+lf+"tadek "+lf, extr.extract());
 	}
 	
 	@Test
@@ -32,14 +33,14 @@ public class PDFExtractorTest {
 		assertNotNull(file);
 		
 		ITextExtractor extr = new PDFExtractor(file);
-		assertEquals("Simple pdf \r\nSadek \r\ntadek \r\n", extr.extract());
+		assertEquals("Simple pdf "+lf+"Sadek "+lf+"tadek "+lf, extr.extract());
 	}
 	
 	@Test
 	public void readFileFromFileName() throws TextExtractorException {
 
 		ITextExtractor extr = new PDFExtractor(getClass().getResource("/simplePdf.pdf").getPath());
-		assertEquals("Simple pdf \r\nSadek \r\ntadek \r\n", extr.extract());
+		assertEquals("Simple pdf "+lf+"Sadek "+lf+"tadek "+lf, extr.extract());
 	}
 	
 	@Test
