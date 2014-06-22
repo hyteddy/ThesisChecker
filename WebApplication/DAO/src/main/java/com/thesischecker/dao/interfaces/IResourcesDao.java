@@ -31,7 +31,7 @@ public interface IResourcesDao {
      * @param resourceID
      * @return
      */
-    public List<ResourceEntity> findById(Long resourceID);
+    public ResourceEntity findById(Long resourceID);
 
     /**
      * Find Resources other than given id

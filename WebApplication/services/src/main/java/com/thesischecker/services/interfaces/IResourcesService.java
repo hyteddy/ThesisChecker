@@ -26,7 +26,7 @@ public interface IResourcesService {
      * @param id
      * @return
      */
-    public List<ResourceEntity> get(Long id);
+    public ResourceEntity get(Long id);
 
     /**
      * Save resource on db and file system

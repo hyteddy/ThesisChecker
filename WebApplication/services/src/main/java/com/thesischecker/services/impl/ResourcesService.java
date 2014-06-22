@@ -37,7 +37,7 @@ public class ResourcesService implements IResourcesService {
     }
 
     @Override
-    public List<ResourceEntity> get(Long id) {
+    public ResourceEntity get(Long id) {
         return this.resourcesDao.findById(id);
     }
 

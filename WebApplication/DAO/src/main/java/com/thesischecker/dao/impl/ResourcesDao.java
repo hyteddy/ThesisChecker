@@ -53,13 +53,9 @@ public class ResourcesDao extends AbstractDao implements IResourcesDao {
     }
 
     @Override
-    public List<ResourceEntity> findById(Long resourceID)
+    public ResourceEntity findById(Long resourceID)
     {
-        Map<String, Object> paramValues = new HashMap<String, Object>();
-        String query = "From ResourceEntity As res ";
-        query += getPrefix(true) + " res.id = :resourceId";
-        paramValues.put("resourceId",resourceID);
-        return getSession().createQuery(query).setProperties(paramValues).list();
+        return (ResourceEntity) getSession().get(ResourceEntity.class, resourceID);
     }
 
     @Override

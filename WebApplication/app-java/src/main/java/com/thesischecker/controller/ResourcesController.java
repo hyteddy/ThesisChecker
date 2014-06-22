@@ -180,14 +180,13 @@ public class ResourcesController {
             List<ObjectError> errors = result.getAllErrors();
             return new ResponseUtil(Constants.FORM_VALIDATION_ERRORS, errors);
         } else {
-            List<ResourceEntity> resourceEntities = this.resourcesService.get(idModel.getId());
-            if (resourceEntities.size() != 0) {
-                List resources = new ArrayList<Resource>();
-                for (ResourceEntity resourceEntity : resourceEntities) {
-                    resources.add(new Resource(resourceEntity));
-                }
-                return new ResponseUtil(resources);
-            } else {
+            ResourceEntity resourceEntity = this.resourcesService.get(idModel.getId());
+            if(resourceEntity!=null)
+            {
+                return new ResponseUtil(resourceEntity);
+            }
+            else
+            {
                 return new ResponseUtil(Constants.NO_RECORDS_FOUND);
             }
         }
