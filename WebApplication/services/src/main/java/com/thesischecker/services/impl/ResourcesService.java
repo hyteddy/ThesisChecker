@@ -42,6 +42,11 @@ public class ResourcesService implements IResourcesService {
     }
 
     @Override
+    public List<ResourceEntity> getOthersById(Long id) {
+        return this.resourcesDao.findOtherById(id);
+    }
+
+    @Override
     @Transactional
     public Long save(String name, String fileType, String filePath,
                      String plainText, Date createdAt, Long userId) {

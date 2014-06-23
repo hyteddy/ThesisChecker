@@ -29,6 +29,13 @@ public interface IResourcesService {
     public ResourceEntity get(Long id);
 
     /**
+     * Find resources with id other than given
+     * @param id
+     * @return
+     */
+    public List<ResourceEntity> getOthersById(Long id);
+
+    /**
      * Save resource on db and file system
      * @param name
      * @param fileType
